@@ -1,0 +1,295 @@
+.minha_foto{ /*Minha foto 3x4*/
+    border: 2px solid black;
+    position: absolute;
+    width: 8vw;
+    right: 15vw; 
+    transition: 2.8s;
+    transition-timing-function: ease-in-out;
+    z-index: 1;
+}
+
+.minha_foto:hover{ /*Efeito minha foto 3x4*/
+    border: 2px solid black;
+    width: min(67vw,800px);
+    position: absolute;
+    transition: 4.2s;
+    box-shadow: 0 3vw 5vw 0 black;
+    /*
+    border: 2px solid black;
+    width: 10%;
+    position: absolute;
+    transition: 1.8s;
+    */
+}
+
+/*Logos pequenos em textos*/
+.logo_em_texto_UNICAMP{
+    width: min(2vw,25px); /*min(2vw,25px) tem que estar de acordo com .ponto1*/
+    position: relative;
+}
+
+.logo_em_texto_ETEC{
+    width: min(3vw,32px); /*min(2vw,25px) tem que estar de acordo com .ponto1*/
+    position: relative;
+}
+
+.logos_link{
+    position: relative;
+    width: min(3vw,30px);
+    transition-timing-function: ease-in-out;
+    transition: .5s;
+    right: max(-.5vw,-5px);
+  }
+  
+.logos_link:hover {
+    opacity: 0.6;
+}
+
+/*Linha de quebra*/
+hr.linha_de_quebra{
+    line-height: .5;
+    color: black;
+    background-color: black;
+    border-width: 0vw;
+    height:0vw;
+}
+
+/*Textos*/
+.meu_nome{
+    border-bottom-style: double;
+    font-size: min(3vw,60px);
+}
+
+.descricao{
+    font-size: min(2vw,22px);
+    margin-right: 11vw;
+}
+
+.topico{
+    font-size: min(2vw,35px);
+    line-height: 1%;
+}
+
+.subponto{
+    font-size: min(1.6vw,20px);
+    position: relative;
+    right: 15px;
+    color: black;
+}
+
+.ponto1{
+    font-size: min(2vw,25px);
+    color: black;
+}
+
+.ponto2{
+    font-size: min(2vw,25px);
+    position: relative;
+    right: 15px;
+    color: black;
+    transition: 1.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.ponto2:hover{
+    font-size: min(2.25vw,30px);
+    position: relative;
+    color: #473f3f;
+    right: 15px;
+    transition: 1.3s;
+}
+
+.ponto3{
+    font-size: min(2vw,25px);
+    position: relative;
+    right: 15px;
+    color: black;
+}
+
+.ponto4{
+    font-size: min(2vw,25px);
+    position: relative;
+    right: 15px;
+    color: black;
+    list-style-type: square;
+}
+
+.observacao{
+    font-size: min(1.6vw,20px);
+    right: 4px;
+}
+
+/*Efeitos para textos escondidos*/
+.escondido {
+    position: relative;
+    text-align: justify;
+  }
+
+.conteudo_escondido{
+    border-radius: 0vw;
+    position: relative; /*absolute*/
+    background-color: #f9f9f9;
+    box-shadow: 0px 3vw 3vw 0px rgba(0, 0, 0, 0.342);
+
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+
+    border: 0vw solid black;
+    z-index: 1;
+
+    width: fit-content;
+
+    font-size: 0;
+
+    opacity: 0;
+    transition: 1s;
+}
+
+.escondido:hover .conteudo_escondido {
+    display: block;
+    transition: 1.5s;
+    opacity: 1;
+
+    width: fit-content;
+
+    border-radius: 2vw;
+
+    font-size: min(1.6vw,20px);
+    border: .1vw solid black;
+
+    padding-left: min(2vw,15px);
+    padding-right: min(2vw,15px);
+    padding-bottom: min(.5vw,5px);
+    padding-top: min(.5vw,5px);
+  }
+
+/*Imagens de fundo*/
+#fundo{
+    background-image: url(../../assets/imagens/fundo/madeira.jpg);
+    position: relative;
+    margin: 0px;
+    border: none;
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px;
+    background-size: 612px 353px;
+
+    /*Natal
+    background-image: url(../../assets/imagens/fundo/natal.jpg);
+    position: relative;
+    margin: 0px;
+    border: none;
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px;
+    background-size: 150px 150px;
+    */
+}
+
+#papel{
+    background-image: url(../../assets/imagens/fundo/papel.jpg);
+    background-repeat: repeat;
+    margin-right: 6%;
+    margin-left: 6%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    padding: 3vw;
+    border: min(5px,.7vw) solid black;
+    border-radius: 10px;
+    background-size: 20%;
+}
+
+/*Imagens para certificados e suas configurações*/
+.galeria {
+    border: 0.3vw solid rgb(0, 0, 0);
+    transition: 1.5s;
+    transition-timing-function: ease-in-out;
+    border-radius: .2vw;
+    background-color: #fafafa;
+  }
+  
+.galeria:hover {
+    border: 0.3vw solid rgb(196, 196, 196);
+    background-color: #f8f8f8;
+    box-shadow: 0px 1vw 1vw 0.2vw rgba(0, 0, 0, 0.555);
+    transition: 0.5s;
+}
+  
+div.galeria img {
+    width: 100%;
+    height: auto;
+}
+  
+.texto_img {
+    padding: 1vw;
+    text-align: center;
+    font-size: .8vw;
+    color: black;
+    transition: 0.5s;
+}
+
+.texto_img:hover {
+    padding: 1vw;
+    text-align: center;
+    font-size: .8vw;
+    color: rgb(105, 105, 105);
+}
+    
+.responsivo1 {
+    padding: 1vw 1vw;
+    float: left;
+    width: 30%;
+}
+
+.responsivo2 {
+    padding: 1vw 1vw;
+    float: left;
+    width: 30%;
+}
+
+.termina_imagem:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+/*Deixar caixas alinhadas*/
+.container { /*Deixar alinhado*/
+    display: table;
+  }
+
+/*Links e funções*/
+.link {
+    text-decoration-line: none;
+    color: #050505;
+    text-decoration-line: underline;
+    text-decoration-color: #050505;
+    transition: color 1s, text-decoration-color 1s;
+    }
+.link:hover {
+    text-decoration-color: #4221b8;
+    color: #371d92;
+    }
+
+.link_liga {
+    text-decoration-line: none;
+    color: #050505;
+    text-decoration-line: none;
+    text-decoration-color: #050505;
+    transition: 1s;
+    }
+.link_liga:hover {
+    text-decoration-line: underline;
+    text-decoration-color: #4221b8;
+    color: #371d92;
+    }
+
+html {
+    scroll-behavior: smooth
+}
+
+.tab {
+    tab-size: 4;
+}

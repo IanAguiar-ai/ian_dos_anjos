@@ -9,111 +9,187 @@
     </head>
 
     <body id = "fundo">
+            
+        <div class="tab">
+            <button class="tablinks" onclick="window.location.href='index.html'">Informações</button>
+            <button class="tablinks" onclick="window.location.href='projetos.html'">Projetos</button>
+            <button class="tablinks" onclick="window.location.href='eventos.html'">Eventos</button>
+            <button class="tablinks" onclick="window.location.href='contato.html'">Contato</button>
+        </div>        
 
             <ul id = "papel">
                 <!-- Titulo e foto -->
                 <img class = "minha_foto" src = "assets/imagens/eu/IAN.jpg" >
-                <strong><ins class = "meu_nome" id = "nome">Ian dos Anjos Melo Aguiar</ins></strong>
-                <a href = "https://www.linkedin.com/in/ian-dos-anjos-melo-aguiar-7a0317227/"><img class = "logos_link" src = "assets/imagens/logos/linkedin.png"></a>
-                <a href = "https://github.com/IanAguiar-ai?tab=repositories"><img class = "logos_link" src = "assets/imagens/logos/github.png"></a>
-                <a href = "http://lattes.cnpq.br/8603878023680458"><img class = "logos_link" src = "assets/imagens/logos/lattes.png"></a>
+                <strong><h1><ins class = "meu_nome" id = "nome">Ian dos Anjos Melo Aguiar</ins></h1></strong>
                 <br/>
-                <p class = "descricao"> Campinas-SP | (19)988504548 | <a class = link_liga href = "mailto:iannaianjos@gmail.com">iannaianjos@gmail.com</a></p>
                 
-                <!-- Download Currículo -->
-                <p class = "descricao"><strong>
-                    <a class = link_liga target = "_blank" href = "assets/imagens/curriculo_pdf/CV_IAN_ANJOS.pdf"> [Clique aqui para abrir o currículo em <i>PDF</i>] </a></strong>
-                </p>
-
-                <hr class = "linha_de_quebra"/>
-
                 <!-- Informações -->
-                <strong><p class = "topico">Formação acadêmica:</p></strong>
-                <p class = "ponto1">Bacharelado em Estatística com Estudos em Ciências de Dados <strong>|</strong> 
-                <img class = "logo_em_texto_UNICAMP" src = "assets/imagens/logos/Unicamp.png">
-                <strong>UNICAMP (2020 - 12/2024) - Campinas</strong></p>
-                <p class = "ponto1">Técnico em Eletrotécnica <strong>|</strong> 
-                <img class = "logo_em_texto_ETEC" src = "assets/imagens/logos/ETEC_B_Q.png">
-                <strong>ETEC Bento Quirino (2017 - 12/2019) - Campinas</strong></p>
+                <strong><h1>Sobre mim:</h1></strong>
+                <h3 align = "justify">&emsp;Olá, meu nome é Ian e atualmente sou estudante de mestrado em Engenharia da Computação na UNICAMP.
+                    </br>
+                    &emsp;Tenho uma grande afinidade por explorar novas ideias e aprender por meio de observações e experimentações. No meu tempo livre, dedico-me ao desenvolvimento e aprimoramento de projetos pessoais, além de estudar, de forma independente, temas que me fascinam, como Redes Neurais, Criptografia, Compressão de Dados, Machine Learning, Otimização de Códigos, Grafos, Processos Estocásticos e Estimadores Matemáticos. Esse repertório técnico me permite abordar e resolver problemas diversos de maneira criativa e eficiente.
+                    </br>
+                    &emsp;Sou apaixonado por construir coisas do zero, discutir ideias e filosofar. Tenho interesse por livros técnicos, de filosofia e de economia. Há tempos, não sinto interesse em assistir séries ou ouvir músicas com canto. Ainda assim, já estudei música por conta própria, com foco em violão clássico, e ocasionalmente componho no teclado ou arranho um pouco no violino.
                 <hr class = "linha_de_quebra"/>
 
-                <strong><p class = "topico">Sobre mim:</p></strong>
-                <p class = "ponto1" align = "justify">&emsp;Olá, meu nome é Ian. Atualmente, sou estudante de Estatística na UNICAMP.
-                     Tenho grande afinidade por experimentar novas ideias e aprender através de minhas próprias observações.
-                      Dedico meu tempo livre para criar e aprimorar alguns dos meus <a class = link_liga href = "#projetos">projetos pessoais<a>. Além disso,
-                       busco estudar por conta própria temas que me interessam profundamente, como Machine Learning, 
-                       Computação e Matemática em geral.
+                <h1>Formação Acadêmica:</h1>
+
+                <div class="formacao-container">
+                    <table class="formacao-table">
+                        <tr>
+                            <th>Instituição</th>
+                            <th>Período</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="logo-em-texto" src="assets/imagens/logos/Unicamp.png" alt="UNICAMP">
+                                UNICAMP (FEEC) - Mestrado em Engenharia da Computação
+                            </td>
+                            <td>1/2025 - Atualmente</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="logo-em-texto" src="assets/imagens/logos/Unicamp.png" alt="UNICAMP">
+                                UNICAMP (IMECC) - Bacharelado em Estatística
+                            </td>
+                            <td>03/2020 - 12/2024</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="logo-em-texto" src="assets/imagens/logos/ETEC_B_Q.png" alt="ETEC Bento Quirino">
+                                ETEC Bento Quirino - Técnico em Eletrotécnica
+                            </td>
+                            <td>02/2017 - 12/2019</td>
+                        </tr>
+                    </table>
+                </div>
+
                 <hr class = "linha_de_quebra"/>
 
                 <!-- Experiências -->
-                <strong><p class = "topico">Experiências:</p></strong>
+                <strong><h1>Experiências:</h1></strong>
                 <ul>
-                        <li class = "ponto4"><strong>Pesquisa de Iniciação Científica (2022 - 2023)</strong></li>
-                        <div class = "subponto"> Pesquisa com o tema <strong>Mapeamento e Classificação das Regiões Hidrográficas por Aprendizado de Máquina</strong> com bolsa pela <i>PIBIC</i>.
-                            Em resumo, utilizando o <strong><i>Self-Organizing Maps (SOM)</strong></i> e outras técnicas de <strong>Aprendizado de Máquina</strong>, 
-                            é possível classificar as regiões hidrogeológicas do Brasil com base em dados hidroquímicos
-                    </div>
-
+                        <h2><strong>Pesquisador (2025 - atualmente)</strong></h2>
+                        <strong>(Bolsa MOVER) Departamento de Sistemas e Energia (FEEC|DSE), UNICAMP</strong>
+                            <li>Desenvolvimento de métricas para detectar anomalias em baterias de íons de ferro fosfato.</li>
+                            <li>Elaboração de índices para otimização do consumo de energia em veículos elétricos.</li>                        
                         </p>
+
+                        <h2><strong>Desenvolvedor de Firmware (2023 - 2024)</strong></h2>
+                        <strong>(Estágio) OneRF, Campinas - SP</strong>
+                            <li>Desenvolvi firmwares em C para projetos de IoT voltados para Smart Grid.</li>
+                            <li>Criei softwares em Python para homologação de firmwares e soluções usando Machine Learning e teorias de grafos para apoiar decisões da equipe de operações.</li>
+                            <li>Otimizei algoritmos para sistemas embarcados, focando em processamento e uso eficiente de memória.</li>
+                            <li>Análise de dados por meio de API interna da empresa para auxiliar na tomada de decisão do time de operações.</li>
+                        
+                        </p>
+
+                        <h2><strong>Pesquisa de Iniciação Científica (2022 - 2023)</strong></h2>
+                        <strong>(Bolsa PIBIC) Faculdade de Engenharia Elétrica e de Computação (FEEC), UNICAMP</strong>
+                            <li>Conduzi pesquisas sobre redes neurais não supervisionadas aplicadas à classificação de poços aquíferos.</li>
+                            <li>Implementei soluções do zero em Python.</li>
+                            <li>Automatizei e corrigi grandes volumes de dados provenientes da CETESB para uso na pesquisa.</li>
+
+                        <!-- </p>
                         <video src=".\assets\imagens\videos\som.mp4" style="width: min(480px,46vw)"; controls>
                             Seu navegador não suporta a reprodução de vídeo.
                         </video>
+                        </p>
+                        --> 
 
-                        </p> 
-
+                        <!--
                         <li class = "ponto4"><strong>Projetos industriais</strong></li>
                         <div class = "subponto">Estou auxiliando no desenvolvimento de alguns pequenos projetos que requerem microcontroladores. 
                             Minhas responsabilidades no projeto incluem programar os microcontroladores em <i>MicroPython</i> ou <i>C simplificado</i>, 
-                            documentar o projeto e auxiliar em questões gerais de administração e <i>design</i>.</div>
-
+                            documentar o projeto e auxiliar em questões gerais de administração e <i>design</i>.
+                        </div>
+                        -->
                         </p>
 
-                        <li class = "ponto4"><strong>Aulas particulares de <i>Python</i></strong></li>
+                        <h2><strong>Aulas particulares de <i>Python</i> (2022)</strong></h2>
                 </ul>
                 <hr class = "linha_de_quebra"/>
 
                 <!-- Conhecimentos -->
-                <strong><p class = "topico">Conhecimentos:</p></strong>
+                <strong><h1>Linguagens de Programação:</h1></strong>
                 <ul>
                     <div class = "escondido">
-                        <li class = "ponto2">Linguagem <strong><i>Python</i></strong>;</li>
-                        <div class="conteudo_escondido">Desde o essencial como <strong><i>Funções</i></strong>, <strong><i>Módulos</i></strong>, <strong><i>Classes</i></strong> (programação orientada a objeto), <strong><i>Decoradores</i></strong>,
-                            otimização de códigos usando ferramentas de <strong><i>Multithreading</i></strong> como o <strong><i>multiprocessing</i></strong>, <strong><i>threading</i></strong> e <strong><i>Numba</i></strong>, compilação e importação de código em linguagem de máquina, compilação em lingagem <strong><i>Cython</i></strong>(C + Python), interface gráfica com <strong><i>Tkinter</i></strong>,
-                            ferramentas para <strong>Ciência de Dados</strong> e <strong>Aprendizado de Máquina</strong> como o <strong><i>Scikit-learn</i></strong>, <strong><i>Keras</i></strong>, <strong><i>Pandas</i></strong>, <strong><i>TensorFlow</i></strong>, <strong><i>Scipy</i></strong>, <strong><i>Matplot</i></strong>
-                            e <strong><i>Numpy</i></strong>, acessar e manipular banco de dados <strong><i>SQL</i></strong>, entre outros conhecimentos para automatização de rotinas.</div>
+                        <h2><li>Linguagem <strong><i>Python</i></strong>;</li></h2>
+                        <div class="conteudo_escondido">
+                            <li><strong><i>Funções</i></strong></li>
+                            <li><strong><i>Módulos</i></strong></li>
+                            <li><strong><i>Classes</i></strong> (programação orientada a objeto)</li>
+                            <li><strong><i>Decoradores</i></strong></li>
+                            <li><strong><i>Criação e distribuição de Bibliotecas</i></strong></li>
+                            <li>Otimização de códigos usando ferramentas de <strong><i>Multithreading</i></strong>:
+                                <ul>
+                                    <li><strong><i>multiprocessing</i></strong></li>
+                                    <li><strong><i>threading</i></strong></li>
+                                    <li><strong><i>Numba</i></strong></li>
+                                </ul>
+                            </li>
+                            <li>Compilação e importação de código em linguagem de máquina</li>
+                            <li>Compilação em linguagem <strong><i>Cython</i></strong> (C + Python)</li>
+                            <li>Compilação em <strong><i>C</i></strong> com <strong><i>API</i></strong> do python <strong><i>CPython</i></strong> (C + API-Python)</li>
+                            <li>Interface gráfica com <strong><i>Tkinter</i></strong></li>
+                            <li>Ferramentas para <strong>Ciência de Dados</strong> e <strong>Aprendizado de Máquina</strong>:
+                                <ul>
+                                    <li><strong><i>Scikit-learn</i></strong></li>
+                                    <li><strong><i>Keras</i></strong></li>
+                                    <li><strong><i>Pandas</i></strong></li>
+                                    <li><strong><i>TensorFlow</i></strong></li>
+                                    <li><strong><i>Scipy</i></strong></li>
+                                    <li><strong><i>Matplotlib</i></strong></li>
+                                    <li><strong><i>Numpy</i></strong></li>
+                                </ul>
+                            </li>
+                            <li>Criação de <strong><i>API</i></strong> usando <strong><i>Flask</i></strong></li>
+                            <li>Acesso e manipulação de banco de dados <strong><i>SQL</i></strong></li>
+                            <li>Automação de rotinas</li>
+                        </div>
                     </div>
-                    
 
                     <div class = "escondido">
-                        <li class = "ponto2">Linguagem <strong><i>R</i></strong>;</li>
+                        <h2><li>Linguagem <strong><i>C</i></strong>;</h2></li>
+                        <div class="conteudo_escondido">
+                            <li><strong>Ponteiros</strong></li>
+                            <li><strong>Alocação dinâmica</strong></li>
+                            <li>Criação de <strong>Estruturas de Dados</strong>:
+                                <ul>
+                                    <li>Listas simples</li>
+                                    <li>Listas circulares</li>
+                                    <li>Pilhas</li>
+                                    <li>Filas</li>
+                                    <li>Árvores binárias balanceadas</li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>                    
+
+                    <div class = "escondido">
+                        <h2><li>Linguagem <strong><i>R</i></strong>;</h2></li>
                         <div class="conteudo_escondido">Geração de relatórios em <strong><i>R Markdown</i></strong> com análise descritiva e preditiva, 
                             leitura e processamento de bancos de dados em <strong><i>SQL</i></strong> ou <strong><i>.xlsx</i></strong>,
                             manipulação e busca usando <strong><i>RSQLite</i></strong>, <strong><i>Tidy</i></strong>, <strong><i>dplyr</i></strong> entre outros.</div>
                     </div>
 
                     <div class = "escondido">
-                        <li class = "ponto2">Linguagem <strong><i>SQL</i></strong>;</li>
+                        <h2><li>Linguagem <strong><i>SQL</i></strong>;</h2></li>
                         <div class="conteudo_escondido">Modelagem, normalização, criação e interação de dados com <strong><i>MySQL</i></strong> ou <strong><i>SQLite</i></strong>, 
                             relacionamento de bancos de dados, uso de <strong><i>Store Procesure</i></strong>, <strong><i>Triggers</i></strong> e 
                              estrutura <strong><i>ACID</i></strong> para transações.</div>
                     </div>
 
                     <div class = "escondido">
-                        <li class = "ponto2">Linguagem <strong><i>C</i></strong>;</li>
-                        <div class="conteudo_escondido">Ponteiros, alocação dinâmica, criação de <strong>Estruturas de Dados</strong> como listas simples,
-                             listas circulares, pilhas, filas, arvores binárias balanceadas, entre outros.</div>
+                        <h2><li>Versionamento de código com o <strong><i>Github</i></strong>;</h2></li>
                     </div>
 
-                    <div class = "escondido">
-                        <li class = "ponto2">Versionamento de código com o <strong><i>Github</i></strong>;</li>
-                    </div>
-
-                    <li class = "ponto2"><strong><i>Excel</i></strong> Avançado.</li>
+                    <h2><li><strong><i>Excel</i></strong> Avançado.</h2></li>
                 </ul>
                 <hr class = "linha_de_quebra"/>
 
                 <!-- Competências -->
-                <strong><p class = "topico">Competências Comportamentais:</p></strong>
+                <strong><h1>Competências Comportamentais:<h1></strong>
                 <ul>
                     <li class = "ponto3">Criatividade em solucionar problemas;</li>
                     <li class = "ponto3">Trabalho em conjunto;</li>
@@ -122,298 +198,8 @@
                 </ul>
                 <hr class = "linha_de_quebra"/>
 
-                <!-- Projetos pessoais -->
-                <strong><p class = "topico" id = "projetos">Alguns dos meus projetos:</p></strong>
-                <ul>
-                    <!-- O hiroku ficou pago!
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://encryptionrle.herokuapp.com/">Criptografia Linear Randômica;</a></li>
-                        <div class="conteudo_escondido">Um site que criptografa mensagens a sua escolha. Baseado em um modelo matemático que pensei, 
-                            esse modelo de codificação é linear e randômico, isso significa que existem infinitas codificações para cada palavra, 
-                            mas apenas uma palavra para cada codificação.</div>
-                    </div>
-                    -->
+            </ul> <!-- Fundo de papel -->
 
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://drive.google.com/file/d/1nPrGwyPqkx-8b0VcOs3DQArSBGBYLNkM/view?usp=sharing">Escondedor de imagens;</a></li>
-                        <div class="conteudo_escondido">É um programa que oculta imagens dentro de outras imagens. O algoritmo utilizado baseia-se em aritmética modular (matemática dos restos),
-                             no qual ele reserva uma quantidade de bits para a imagem principal e outra quantidade de bits para a imagem oculta.
-                            <a class = link href = "https://drive.google.com/drive/folders/11jNDs_EZvZmleqLv6aVeyA6g6v9nl-XR?usp=drive_link">Nesta pasta do <i>Google Drive</i></a> você pode baixar tanto
-                            a ferramenta em <i>.exe</i> quanto o próprio código.</div>
-                    </div>
-                    
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://drive.google.com/drive/folders/1747p3ltm4Rp4E-Hxt4H8YS3fRNjgHwBL">Calculadora Flexível;</a></li>
-                        <div class="conteudo_escondido">Uma calculadora com o objetivo de ser flexível. Ela pode armazenar suas próprias funções usando as sintaxes já disponibilizadas pelo programa,
-                             além de ser capaz de corrigir erros de sintaxe e armazenar variáveis, entre outras funcionalidades. Em resumo, trata-se de uma calculadora que se adapta ao usuário.</div>
-                    </div>
-
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://drive.google.com/drive/folders/1h-PdKs-uDdHQJZc_K_2YQqBkVuk2jJO8?usp=sharing">Conversor <i>txt</i> para <i>png</i> e vice-versa;</a></li>
-                        <div class="conteudo_escondido">Dentro desse link tem dois conversores, um monocromático e um <i>RGB</i>, os dois funcionam da mesma forma, você escolhe um arquivo <i>txt</i> 
-                            transforma ele em um <i>png</i> e vice-versa. O código não aceita erros na hora de colocar os nomes do <i>txt</i> ou do <i>png</i>!</div>
-                    </div>
-
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://drive.google.com/drive/folders/1zx6LQFEH4BICagS9Ahi3Bzk0AkYMoUmi?usp=sharing">Modelo de séries temporais usando <i>Cadeias de Markov</i>;</a></li>
-                        <div class="conteudo_escondido">Um modelo de séries temporais que desenvolvi com base na ideia de <i>Cadeias de Markov</i>. Não possui uma interface para o usuário, apenas o código. 
-                            Para testá-lo, é necessário ter o <i>Python 3</i> ou uma versão superior instalada, bem como a biblioteca <i>matplotlib</i>.</div>
-                    </div>
-
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://drive.google.com/drive/folders/13zn7CPU6scR1Jhmv1WAlaLXkcHVaUNSC?usp=sharing">Rede Neural Artificial do zero;</a></li>
-                        <div class="conteudo_escondido">Montei uma Rede Neural Artificial do zero. A rede é iterativa e não é muito rápida devido à inclusão de vários mecanismos de autocorreção,
-                             o que a tornou mais lenta.
-
-                            Existem dois códigos disponíveis: um para criar e treinar a rede usando comandos e outro que permite criar graficamente um design de rede, que pode ser exportado pressionando a 
-                            tecla 'e' após a montagem da rede. O segundo código utiliza o <i>pygame</i>, portanto, para executá-lo, é necessário ter o <i>Python</i> e o <i>pygame</i> instalados no seu computador.
-                            
-                            Após exportar a rede, ele criará um arquivo <i>.json</i> que só pode ser lido pelo interpretador do código principal. Para importar o
-                             arquivo, basta executar o código e usar o comando <i>rede.import_design</i>. Se o arquivo <i>.json</i> estiver na mesma pasta, ele será importado.
-                              Depois disso, você pode treiná-lo, e um exemplo de treinamento está no código principal usando o comando <i>rede.train(...)</i>.
-                            
-                            Há também um vídeo de exemplo na mesma pasta onde o código está localizado. Além disso, você pode acessar o repositório no 
-                            <a class="link" href="https://github.com/IanAguiar-ai/artificial_neural_network"><i>GitHub</i></a> para baixá-lo como uma biblioteca em sua própria máquina. 
-                            Para ver um exemplo, <a class="link" href="https://github.com/IanAguiar-ai/artificial_neural_network/blob/main/example/Example_artificial_neural_network.ipynb">(clique aqui)</a>.
-                        </div>
-                    </div>
-
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://drive.google.com/drive/folders/1nRAp22F01FU1ffrTGT9H35d1IsxvsGNu?usp=sharing">Engine 3D simples;</a></li>
-                        <div class="conteudo_escondido">Foi uma <i>engine</i> que desenvolvi do zero. No projeto, importo apenas a biblioteca <i>pygame</i> para traçar linhas e polígonos.
-                             Utilizo um sistema de coordenadas tridimensionais e projeto-o em um plano 2D que é renderizado pelo <i>pygame</i>. Se estiver interessado em executar o código,
-                              também é necessário baixar o módulo <i>matrix</i> que criei para a manipulação de vetores e matrizes. Todos os arquivos estão na mesma pasta e possuem extensão <i>.py</i>. 
-                              Portanto, para testá-lo, é necessário ter o <i>Python</i> e o <i>pygame</i> instalados no seu computador.
-                               Dentro da pasta, há um vídeo que demonstra a translação de um triângulo e um quadrado.</div>
-                    </div>
-
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://github.com/IanAguiar-ai/Self_Organizing_Maps"><i>Self Organizing Maps</i> do zero;</a></li>
-                        <div class="conteudo_escondido"> Self-Organizing Maps (SOM), também conhecidos como Mapas Auto-Organizáveis ou Redes de Kohonen,
-                             são algoritmos de aprendizado de máquina não supervisionados. Este projeto foi desenvolvido do zero com algumas diferenças em relação às abordagens tradicionais.
-                              Uma das principais diferenças é que a grade gerada para os neurônios é sempre quadrada e não aleatória. Além disso, a função de atração dos neurônios é discreta,
-                               e para a classificação, o algoritmo faz uso de um dendrograma que facilita a escolha de quantidades específicas
-                                de grupos (<a class = link href = 'https://github.com/IanAguiar-ai/Self_Organizing_Maps/blob/main/example/example.ipynb'>Para um exemplo, clique aqui</a>).
-                        </div>
-                    </div>
-
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://github.com/IanAguiar-ai/metrics">Métricas para Análise de <i>Clusterização.</i></a></li>
-                        <div class="conteudo_escondido">Aqui deixo um exemplo de código para teste (a biblioteca é para <i>Python</i>):
-                            <pre>
-                                <code>
-#Baixar a biblioteca:
-pip install git+https://github.com/IanAguiar-ai/metrics.git
-
-#Importa as métricas:
-from mutual_information import metrics as mtr
-
-#Pedindo os gráficos com as métricas:
-#Você pode ou não passar as classificações reais (labels):
-mtr.print_metrics(clusters,
-                dataframe_numeric,
-                labels)
-
-#clusters = uma lista de listas ou um dataframe 
-#com diversas clusterizações do mesmo método;
-
-#dataframe = os dados usados para a clusteriazação;
-
-#labels = resposta esperada, clusterização real
-#tem que ser uma lista.
-                                </code>
-                            </pre>
-                        </div>
-                    </div>
-                </ul>
-                <hr class = "linha_de_quebra"/>
-
-                <!-- Vídeos e Imagens -->
-                <strong><p class = "topico">Imagens dos projetos:</p></strong>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/esconder_img.PNG">
-                            <img src = "assets/imagens/proj_img/esconder_img.PNG">
-                        </a>
-                        <div class = "texto_img"><u>Escondedor de Imagens</u></div>
-                    </div>
-                </div>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/som_img.PNG">
-                            <img src = "assets/imagens/proj_img/som_img.PNG">
-                        </a>
-                        <div class = "texto_img"><u>Vizualizando o SOM</u></div>
-                    </div>
-                </div>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/videos/Eng_vid.gif">
-                            <img src = "assets/imagens/videos/Eng_vid.gif">
-                        </a>
-                        <div class = "texto_img"><u>Engine 3d do Zero</u></div>
-                    </div>
-                </div>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/metricas.png">
-                            <img src = "assets/imagens/proj_img/metricas.png">
-                        </a>
-                        <div class = "texto_img"><u>Métricas</u></div>
-                    </div>
-                </div>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/som_cluster.png">
-                            <img src = "assets/imagens/proj_img/som_cluster.png">
-                        </a>
-                        <div class = "texto_img"><u>Cluster pelo SOM</u></div>
-                    </div>
-                </div>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "https://drive.google.com/file/d/1gFzjagu0jNnqlNC26BUKrEmf0fr5ZyW3/view?usp=drive_link">
-                            <img src = "assets/imagens/proj_img/neural_network.PNG">
-                        </a>
-                        <div class = "texto_img"><u>Rede Neural Artificial do Zero</u></div>
-                    </div>
-                </div>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/calculadora_f.PNG">
-                            <img src = "assets/imagens/proj_img/calculadora_f.PNG">
-                        </a>
-                        <div class = "texto_img"><u>Calculadora Flexível</u></div>
-                    </div>
-                </div>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/previsao.png">
-                            <img src = "assets/imagens/proj_img/previsao.png">
-                        </a>
-                        <div class = "texto_img"><u>Previsão de Séries Temporais com Cadeias de Markov</u></div>
-                    </div>
-                </div>
-                
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/videos/cubo_bem_comprimido.gif">
-                            <img src = "assets/imagens/videos/cubo_bem_comprimido.gif">
-                        </a>
-                        <div class = "texto_img"><u>Render do zero</u></div>
-                    </div>
-                </div>
-
-                <div class = "descricao"> <div>
-                <p class = "termina_imagem"></p>
-                <hr class = "linha_de_quebra"/>
-
-
-                <!-- Certificações -->
-
-                <strong><p class = "topico">Certificações:</p></strong>
-
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Excel_Intermediario_1.jpg">
-                                <img src = "assets/imagens/Certificados/Excel_Intermediario_1.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Excel Intermediário 1</u></div>
-                        </div>
-                    </div>  
-                    
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Excel_Intermediario_2.jpg">
-                                <img src = "assets/imagens/Certificados/Excel_Intermediario_2.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Excel Intermediário 2</u></div>
-                        </div>
-                    </div> 
-
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Excel_Avancado.jpg">
-                                <img src = "assets/imagens/Certificados/Excel_Avancado.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Excel Avançado</u></div>
-                        </div>
-                    </div> 
-
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Mercado_Financeiro.jpg">
-                                <img src = "assets/imagens/Certificados/Mercado_Financeiro.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Investimento nos Mercados Financeiros</u></div>
-                        </div>
-                    </div> 
-
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/SQL_(MYSQL).jpg">
-                                <img src = "assets/imagens/Certificados/SQL_(MYSQL).jpg">
-                            </a>
-                            <div class = "texto_img"><u>SQL</u></div>
-                        </div>
-                    </div> 
-
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Analise_Para_Negocios.jpg">
-                                <img src = "assets/imagens/Certificados/Analise_Para_Negocios.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Análise para Negócios</u></div>
-                        </div>
-                    </div> 
-
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Base_de_Dados_Com_Python.jpg">
-                                <img src = "assets/imagens/Certificados/Base_de_Dados_Com_Python.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Base de Dados com Python</u></div>
-                        </div>
-                    </div>
-
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Machine_Learning_Pipelines_Azure.jpg">
-                                <img src = "assets/imagens/Certificados/Machine_Learning_Pipelines_Azure.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Machine Learning com Azure</u></div>
-                        </div>
-                    </div>
-
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Deep_Learning.jpg">
-                                <img src = "assets/imagens/Certificados/Deep_Learning.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Aprendizado Profundo e Redes Neurais</u></div>
-                        </div>
-                    </div>
-                <div class = "descricao"> <div>
-
-            
-            <p>Atualizado em Julho de 2023.</p>
-
-            <hr class = "linha_de_quebra"/>
-
-            <!-- Redes -->
-            <center>
-                <a class = "link_liga" href = "#nome">Voltar para o topo.</a>
-            </center>
-
-            </ul>
     </body>
 
     <!-- Scripts -->

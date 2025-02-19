@@ -1,4 +1,4 @@
-.minha_foto{ /*Minha foto 3x4*/
+/*.minha_foto{
     border: 2px solid black;
     position: absolute;
     width: 8vw;
@@ -6,9 +6,20 @@
     transition: 2.8s;
     transition-timing-function: ease-in-out;
     z-index: 1;
+}*/
+
+.minha_foto {
+    float: right;
+    margin-left: 3vw;
+    margin-bottom: 2vw;
+    width: 12vw;
+    right: 15vw; 
+    border-radius: 2vw;
+    border: .3vw solid black;
 }
 
-.minha_foto:hover{ /*Efeito minha foto 3x4*/
+/*
+.minha_foto:hover{
     border: 2px solid black;
     width: min(67vw,800px);
     position: absolute;
@@ -20,7 +31,7 @@
     position: absolute;
     transition: 1.8s;
     */
-}
+}*/
 
 /*Logos pequenos em textos*/
 .logo_em_texto_UNICAMP{
@@ -57,7 +68,6 @@ hr.linha_de_quebra{
 /*Textos*/
 .meu_nome{
     border-bottom-style: double;
-    font-size: min(3vw,60px);
 }
 
 .descricao{
@@ -131,7 +141,7 @@ hr.linha_de_quebra{
     background-color: #f9f9f9;
     box-shadow: 0px 3vw 3vw 0px rgba(0, 0, 0, 0.342);
 
-    padding-left: 0;
+    padding-left: 5vw;
     padding-right: 0;
     padding-bottom: 0;
     padding-top: 0;
@@ -154,12 +164,12 @@ hr.linha_de_quebra{
 
     width: fit-content;
 
-    border-radius: 2vw;
+    border-radius: 3vw;
 
     font-size: min(1.6vw,20px);
     border: .1vw solid black;
 
-    padding-left: min(2vw,15px);
+    padding-left: 3vw;
     padding-right: min(2vw,15px);
     padding-bottom: min(.5vw,5px);
     padding-top: min(.5vw,5px);
@@ -292,4 +302,109 @@ html {
 
 .tab {
     tab-size: 4;
+}
+
+/*Separação*/
+
+.tab {
+    overflow: hidden;
+    border: min(3px) solid #000000;
+    background-color: #eceae3;
+    box-shadow: 0 3vw 5vw 0 black;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 3px;
+  }
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 7px 12px;
+    transition: 0.5s;
+    font-size: max(1.6vw, 8px);
+    border-radius: 15px;
+    color: #050505;
+    font-weight: bold;
+  }
+  .tab button:hover {
+    background-color: #cecece;
+    font-weight: bold;
+  }
+  .tab button.active {
+    background-color: #000000;
+    color: rgb(245, 245, 245);
+  }
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 10px;
+    border-radius: 0 0 15px 15px;
+    color: #050505;
+  }
+
+/* Tabela */
+
+.formacao-container {
+    width: 100%;
+    margin: 20px 0;
+    font-size: min(2vw,22px);
+    /*font-family: Arial, sans-serif;*/
+}
+
+.formacao-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.formacao-table th, 
+.formacao-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.formacao-table th {
+    font-weight: bold;
+}
+
+.logo-em-texto {
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+@media (max-width: 600px) {
+    .formacao-table td, 
+    .formacao-table th {
+        display: block;
+        text-align: center;
+    }
+
+    .formacao-table th {
+        background-color: #000000;
+        color: white;
+    }
+}
+
+/* LOGOS links */
+.contatos {
+    display: flex;
+    flex-direction: column;
+    align-items: start; 
+    gap: 10px; /* Espaçamento entre os itens */
+}
+.contato-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+.contato-item img {
+    width: 24px; 
+    margin-right: 10px;
 }

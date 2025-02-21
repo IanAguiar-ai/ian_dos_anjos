@@ -25,12 +25,10 @@
     position: absolute;
     transition: 4.2s;
     box-shadow: 0 3vw 5vw 0 black;
-    /*
     border: 2px solid black;
     width: 10%;
     position: absolute;
     transition: 1.8s;
-    */
 }*/
 
 /*Logos pequenos em textos*/
@@ -137,15 +135,16 @@ hr.linha_de_quebra{
 
 .conteudo_escondido{
     border-radius: 0vw;
-    position: relative; /*absolute*/
+    position: absolute;
     background-color: #f9f9f9;
-    box-shadow: 0px 3vw 3vw 0px rgba(0, 0, 0, 0.342);
+    box-shadow: 0px 0vw 0vw 0px rgba(0, 0, 0, 0.342);
 
     padding-left: 5vw;
     padding-right: 0;
     padding-bottom: 0;
     padding-top: 0;
 
+    border-radius: 0vw;
     border: 0vw solid black;
     z-index: 1;
 
@@ -158,9 +157,11 @@ hr.linha_de_quebra{
 }
 
 .escondido:hover .conteudo_escondido {
+    position: relative;
     display: block;
     transition: 1.5s;
     opacity: 1;
+    box-shadow: 0px 3vw 3vw 0px rgba(0, 0, 0, 0.342);
 
     width: fit-content;
 
@@ -201,14 +202,14 @@ hr.linha_de_quebra{
 #papel{
     background-image: url(../../assets/imagens/fundo/papel.jpg);
     background-repeat: repeat;
-    margin-right: 6%;
-    margin-left: 6%;
+    margin-right: 2%;
+    margin-left: 2%;
     margin-bottom: 2%;
     margin-top: 2%;
-    padding: 3vw;
-    border: min(5px,.7vw) solid black;
-    border-radius: 10px;
-    background-size: 20%;
+    padding: 2vw;
+    border: .4vw solid black;
+    border-radius: 4vw;
+    background-size: 50%;
 }
 
 /*Imagens para certificados e suas configurações*/
@@ -323,10 +324,11 @@ html {
     cursor: pointer;
     padding: 7px 12px;
     transition: 0.5s;
-    font-size: max(1.6vw, 8px);
+    font-size: max(min(1.8vw, 20px), 6px);
     border-radius: 15px;
     color: #050505;
     font-weight: bold;
+    transition: 0;
   }
   .tab button:hover {
     background-color: #cecece;
@@ -395,7 +397,6 @@ html {
     display: flex;
     flex-direction: column;
     align-items: start; 
-    gap: 10px; /* Espaçamento entre os itens */
 }
 .contato-item {
     display: flex;

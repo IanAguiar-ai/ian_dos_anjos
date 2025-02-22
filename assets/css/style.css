@@ -157,7 +157,7 @@ hr.linha_de_quebra{
 }
 
 .escondido:hover .conteudo_escondido {
-    position: relative;
+    position: absolute;
     display: block;
     transition: 1.5s;
     opacity: 1;

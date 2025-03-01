@@ -255,9 +255,10 @@ div.galeria img {
 }
 
 .responsivo2 {
-    padding: 1vw 1vw;
+    padding: 0.5vw 1.25vw;
     float: left;
     width: 30%;
+    min-height: 26vw;
 }
 
 .termina_imagem:after {

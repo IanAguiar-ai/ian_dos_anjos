@@ -16,9 +16,9 @@ class PointMesh{
         this.best_neighbors = null; // Melhor vizinho
 
         this.#alpha = 0.95; // Cria dinamica, suavização exponencial
-        this.#meters_decay = 40;// Float, quanto maior mais longe as conexões
+        this.#meters_decay = 60;// Float, quanto maior mais longe as conexões
         this.#gain = 1; // Float, ganho por conexão
-        this.#max_to_connect = 120; // Distancia máxima para conexão;
+        this.#max_to_connect = 150; // Distancia máxima para conexão;
     }
 
     #distance(point){ // Retorna float
@@ -116,7 +116,7 @@ ajustarCanvas();
 window.addEventListener("resize", ajustarCanvas);
 
 const all_points = []; // Lista de pontos
-for(let index = 0; index < canvas.width/80*canvas.height/80; index++){
+for(let index = 0; index < canvas.width/70*canvas.height/70; index++){
     const is_gtw = index === 0 ? true : false;
     console.log(is_gtw);
     all_points.push(new PointMesh(is_gtw, [Math.random()*canvas.width, Math.random()*canvas.height]))

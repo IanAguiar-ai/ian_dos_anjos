@@ -64,8 +64,8 @@
         }
 
         .projeto-destaque { border: 1px solid var(--primary); box-shadow: 0 0 15px rgba(37, 99, 235, 0.2); }
-        .projeto-destaque h3 { color: var(--primary); margin-bottom: 10px; display: flex; justify-content: space-between; }
-        .badge { background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; }
+        .projeto-destaque h3 { color: var(--primary); margin-bottom: 1px; display: flex; justify-content: space-between; }
+        .badge { background: var(--primary); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; }
 
         .links-projeto { margin-top: 15px; display: flex; gap: 15px; }
         .btn-git { text-decoration: none; color: white; background: #334155; padding: 8px 15px; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; }
@@ -144,12 +144,13 @@
 
         <h2>Simulação: Menor Caminho em Rede Mesh</h2>
         <section class="card">
-            <p>O fundo desta página está executando uma simulação em tempo real baseada no algoritmo de <strong>Bellman-Ford</strong>. Cada "node" (azul) busca constantemente o menor custo para alcançar o "gateway" (vermelho), considerando a distância física e a degradação de sinal (Alpha Decay).</p>
+            <h3>Menor Caminho por Bellman</h3>
+            <p>O fundo desta página está executando uma simulação em tempo real baseada no algoritmo de <strong>Bellman</strong>. Cada "node" (azul) busca constantemente o menor custo para alcançar o "gateway" (vermelho), considerando a distância física e a degradação de sinal (Alpha Decay).</p>
             
-            <button class="btn-foco" onclick="ativarFoco()">Ver Simulação com Fundo Claro</button>
+            <button class="btn-foco" onclick="ativarFoco()">Ver Simulação</button>
             <a href="assets/pdfs/IA367H_2025s2_172483.pdf" target="_blank" class="btn-git" style="margin-top: 0;">Ver Explicação</a>
             
-            <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Teoria dos Grafos, Aprendizado por Rerforço, Bellman-Ford.</p>
+            <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Teoria dos Grafos, Aprendizado por Rerforço, Bellman.</p>
         </section>
 
         <h2>Publicações</h2>
@@ -163,7 +164,7 @@
                 <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Machine Learning, Mineração de Dados, Classificação.</p>
             </section>
 
-            <section class="card">
+            <section class="card projeto-destaque">
                 <h3>Cycle-Based Compressor <span class="badge">Novo</span></h3>
                 <p>Desenvolvimento de um compressor de dados para protocolos de IoT baseado na identificação e codificação de ciclos.</p>
                 <div class="links-projeto">
@@ -194,7 +195,7 @@
         <section class="github-footer">
             <p>Meu GitHub possui diversos outros projetos em C e Python, desde criptografia por aritmética modular até redes neurais do zero.</p>
             <br>
-            <a href="https://github.com/IanAguiar-ai?tab=repositories" class="btn-git" style="padding: 15px 30px; font-size: 1.1rem;">Explorar Repositórios no GitHub</a>
+            <a href="https://github.com/IanAguiar-ai?tab=repositories" class="btn-git" style="padding: 15px 30px; font-size: 1.1rem;">GitHub</a>
         </section>
         <p class="disclaimer">HTML e CSS do site feito com auxilio de ferramenta de LLM</p>
 

@@ -1,194 +1,221 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos | Ian Aguiar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-dark: #0f172a;
+            --sidebar-width: 250px;
+            --sidebar-collapsed: 60px;
+            --text-light: #f8fafc;
+            /* Cor do fundo quando em foco */
+            --bg-focus: #e0f2fe; 
+        }
 
-<html lang = "pt-BR">   
-    <head>
-        <meta charset = "UTF-8" http-equiv = "refresh" content = "1800">
-        <meta name = "viewport" content = "width/device-width, initial-scale = 1.0">
-        <link rel = "stylesheet" href = "assets/css/style.css">
-        <title>Currículo Ian dos Anjos Melo Aguiar</title>
-    </head>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-light); display: flex; min-height: 100vh; overflow-x: hidden; transition: background-color 0.8s ease; }
 
-    <body id = "fundo">
+        /* --- SIDEBAR --- */
+        #sidebar {
+            width: var(--sidebar-collapsed);
+            height: 100vh;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            transition: width 0.3s ease, opacity 0.5s ease;
+            position: fixed; left: 0; top: 0; overflow: hidden;
+            border-right: 1px solid rgba(255,255,255,0.1); z-index: 1000;
+        }
+        #sidebar:hover { width: var(--sidebar-width); }
+        #sidebar .nav-links li a span { opacity: 0; transition: opacity 0.2s; visibility: hidden; white-space: nowrap; }
+        #sidebar:hover .nav-links li a span { opacity: 1; visibility: visible; }
+        .menu-btn { padding: 20px; display: flex; flex-direction: column; gap: 5px; }
+        .bar { width: 25px; height: 3px; background: var(--primary); border-radius: 2px; }
+        .nav-links { list-style: none; margin-top: 30px; }
+        .nav-links li a { padding: 15px 20px; display: flex; align-items: center; color: var(--text-light); text-decoration: none; transition: 0.2s; }
+        .nav-links li a:hover { background: rgba(255,255,255,0.1); color: var(--primary); }
+
+        /* --- CONTEÚDO --- */
+        main { flex-grow: 1; margin-left: var(--sidebar-collapsed); padding: 40px 20px; width: 100%;    z-index: 5; transition: opacity 0.5s ease; }
+
+        /* Canvas de Fundo (Bellman-Ford) */
+        #mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.2; pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+
+        /* --- MODO FOCO ATIVO --- */
+        body.foco-ativo { background-color: var(--bg-focus); }
+        body.foco-ativo #mesh { opacity: 1; z-index: 2000; pointer-events: all; cursor: pointer; }
+        body.foco-ativo main, body.foco-ativo #sidebar { opacity: 0; pointer-events: none; }
+
+        h1 { color: var(--primary); margin-bottom: 30px; }
+        h2 { margin: 40px 0 20px 0; border-left: 4px solid var(--primary); padding-left: 15px; }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 25px; border-radius: 16px; margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .projeto-destaque { border: 1px solid var(--primary); box-shadow: 0 0 15px rgba(37, 99, 235, 0.2); }
+        .projeto-destaque h3 { color: var(--primary); margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .badge { background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; }
+
+        .links-projeto { margin-top: 15px; display: flex; gap: 15px; }
+        .btn-git { text-decoration: none; color: white; background: #334155; padding: 8px 15px; border-radius: 8px; font-size: 0.9rem; transition: 0.3s; }
+        .btn-git:hover { background: var(--primary); }
+
+        .btn-foco {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-foco:hover { transform: scale(1.05); }
+
+        .grid-visual { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .img-card img { width: 100%; border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.1); }
+
+        .github-footer { text-align: center; margin-top: 50px; padding: 40px; background: rgba(30, 41, 59, 0.9); border-radius: 16px; }
+
+        @media (max-width: 768px) {
+            main { margin-left: var(--sidebar-collapsed); padding: 20px; }
+            .grid-visual { grid-template-columns: 1fr; }
+        }
+
+        /* Estilo do Disclaimer */
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="mesh"></canvas>
+
+    <nav id="sidebar">
+        <div class="menu-btn"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 <span>&nbsp; Informações</span></a></li>
+            <li><a href="projetos.html">🚀 <span>&nbsp; Projetos</span></a></li>
+            <li><a href="eventos.html">📅 <span>&nbsp; Eventos</span></a></li>
+            <li><a href="certificacoes.html">📜 <span>&nbsp; Certificações</span></a></li>
+            <li><a href="contato.html">📧 <span>&nbsp; Contato</span></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Projetos e Desenvolvimento</h1>
+        <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Palavras Chaves: Algoritmos, Machine Learning (Aprendizado de Máquina), Neural Networks (Redes Neurais), Clustering (Classificação), Regressão, Teoria dos Grafos, Aprendizado Auto-Supervisionado, Mineração de Dados, Compressão, Internet of Things (IoT ou Internet das Coisas).</p>
+
+        <h2>Bibliotecas Práticas de Machine Learning (Aprendizado de Máquina)</h2>
+        
+        <section class="card projeto-destaque">
+            <h3>Free Regression <span class="badge">Destaque</span></h3>
+            <p>Uma biblioteca robusta para construção de regressões genéricas. Ao contrário de modelos "caixa-preta", ela permite ao desenvolvedor definir a função regressora manualmente, configurar parâmetros iniciais de busca e escolher funções de perda personalizadas. Utiliza abordagens numéricas de otimização para garantir ajuste em problemas não-lineares complexos.</p>
+            <div class="links-projeto">
+                <a href="https://github.com/IanAguiar-ai/free_regression" class="btn-git">Ver Documentação</a>
+            </div>
+            <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Regressão, Machine Leaning.</p>
+        </section>
+
+        <section class="card projeto-destaque">
+            <h3>Free Decision Tree <span class="badge">Novo</span></h3>
+            <p>Implementação do zero de árvores de decisão focada em controles finos e transparência algorítmica. O projeto permite visualizar o processo de ganho de informação (Entropia/Gini) e a estrutura de ramificação, sendo ideal tanto para produção quanto para estudos acadêmicos sobre estruturas de dados hierárquicas.</p>
+            <div class="links-projeto">
+                <a href="https://github.com/IanAguiar-ai/free_decision_tree" class="btn-git">Ver Repositório</a>
+            </div>
+            <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Classificação, Machine Learning.</p>
+        </section>
+
+        <h2>Simulação: Menor Caminho em Rede Mesh</h2>
+        <section class="card">
+            <p>O fundo desta página está executando uma simulação em tempo real baseada no algoritmo de <strong>Bellman-Ford</strong>. Cada "node" (azul) busca constantemente o menor custo para alcançar o "gateway" (vermelho), considerando a distância física e a degradação de sinal (Alpha Decay).</p>
             
-        <div class="tab">
-            <button class="tablinks" onclick="window.location.href='index.html'">Informações</button>
-            <button class="tablinks" onclick="window.location.href='projetos.html'">Projetos</button>
-            <button class="tablinks" onclick="window.location.href='eventos.html'">Eventos</button>
-            <button class="tablinks" onclick="window.location.href='certificacoes.html'">Certificações</button>
-            <button class="tablinks" onclick="window.location.href='contato.html'">Contato</button>
-        </div>        
-
-            <ul id = "papel">
-                <!-- Projetos pessoais -->
-                <strong><h2>Programas:</h2></strong>
-                <ul>
-                    <!-- O hiroku ficou pago!
-                    <div class = "escondido">
-                        <li class = "ponto2"><a class = link href = "https://encryptionrle.herokuapp.com/">Criptografia Linear Randômica;</a></li>
-                        <div class="conteudo_escondido">Um site que criptografa mensagens a sua escolha. Baseado em um modelo matemático que pensei, 
-                            esse modelo de codificação é linear e randômico, isso significa que existem infinitas codificações para cada palavra, 
-                            mas apenas uma palavra para cada codificação.</div>
-                    </div>
-                    -->
-
-                    <div class = "escondido">
-                        <h3><li><a class = link href = "https://github.com/IanAguiar-ai/free_regression">Free Regression;</a></li></h3>
-                        <div class="conteudo_escondido">
-                            &emsp;Trata-se de uma biblioteca desenvolvida para a construção de regressões genéricas de diversos tipos.
-                            Com ela, é possível ajustar aspectos essenciais para uma regressão específica, conforme a necessidade do problema.
-                            Por exemplo, é possível selecionar a função regressora, definir os parâmetros iniciais da busca, escolher a função de perda (por padrão, utiliza-se mínimos quadrados com uma abordagem numérica), entre outras configurações.
-                            Para mais detalhes, consulte a documentação da biblioteca clicando no nome <i>Free Regression</i>.
-                        </div>
-                    </div>
-
-                    <div class = "escondido">
-                        <h3><li><a class = link href = "https://github.com/IanAguiar-ai/card_game_ascii">Card Game Ascii;</a></li></h3>
-                        <div class="conteudo_escondido">
-                            &emsp;Jogo desenvolvido do zero para ser executado no terminal. É necessário ter o Python instalado para executá-lo.
-                            </br>
-                            &emsp;O jogo opera com dois processos: um responsável pela lógica do jogo e outro pela engine ASCII, que cuida da exibição no terminal.
-                            </br>
-                            &emsp;Trata-se de um jogo de cartas por turnos, no qual cada jogador possui três cartas. Para testá-lo, basta baixar o jogo e executar o comando <i>python3</i> play.py na pasta onde o arquivo foi salvo.
-                        </div>
-                    </div>
-
-                    <div class = "escondido">
-                        <h3><li><a class = link href = "https://github.com/IanAguiar-ai/esconder_imagens">Escondedor de imagens;</a></li></h3>
-                        <div class="conteudo_escondido">&emsp;É um programa que oculta imagens dentro de outras imagens. O algoritmo utilizado baseia-se em aritmética modular (matemática dos restos),
-                             no qual ele reserva uma quantidade de bits para a imagem principal e outra quantidade de bits para a imagem oculta.
-                        </div>
-                    </div>
+            <button class="btn-foco" onclick="ativarFoco()">Ver Simulação com Fundo Claro</button>
+            <a href="assets/pdfs/IA367H_2025s2_172483.pdf" target="_blank" class="btn-git" style="margin-top: 0;">Ver Explicação</a>
             
-                    <div class = "escondido">
-                        <h3><li><a class = link href = "https://drive.google.com/drive/folders/13zn7CPU6scR1Jhmv1WAlaLXkcHVaUNSC?usp=sharing">Rede Neural Artificial do zero;</a></li></h3>
-                        <div class="conteudo_escondido">&emsp;Montei uma Rede Neural Artificial do zero. A rede é iterativa e não é muito rápida devido à inclusão de vários mecanismos de autocorreção,
-                             o que a tornou mais lenta.
-                            </br>
-                             &emsp;Existem dois códigos disponíveis: um para criar e treinar a rede usando comandos e outro que permite criar graficamente um design de rede, que pode ser exportado pressionando a 
-                            tecla 'e' após a montagem da rede. O segundo código utiliza o <i>pygame</i>, portanto, para executá-lo, é necessário ter o <i>Python</i> e o <i>pygame</i> instalados no seu computador.
-                            </br>
-                            &emsp;Após exportar a rede, ele criará um arquivo <i>.json</i> que só pode ser lido pelo interpretador do código principal. Para importar o
-                            arquivo, basta executar o código e usar o comando <i>rede.import_design</i>. Se o arquivo <i>.json</i> estiver na mesma pasta, ele será importado.
-                            Depois disso, você pode treiná-lo, e um exemplo de treinamento está no código principal usando o comando <i>rede.train(...)</i>.
-                            </br>
-                            &emsp;Há também um vídeo de exemplo na mesma pasta onde o código está localizado. Além disso, você pode acessar o repositório no 
-                            <a class="link" href="https://github.com/IanAguiar-ai/artificial_neural_network"><i>GitHub</i></a> para baixá-lo como uma biblioteca em sua própria máquina. 
-                            
-                            &emsp;Para ver um exemplo, <a class="link" href="https://github.com/IanAguiar-ai/artificial_neural_network/blob/main/example/Example_artificial_neural_network.ipynb">(clique aqui)</a>.
-                        </div>
-                    </div>
+            <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Teoria dos Grafos, Aprendizado Auto-Supervisionado, Bellman-Ford.</p>
+        </section>
 
-                    <div class = "escondido">
-                        <h3><li><a class = link href = "https://github.com/IanAguiar-ai/Engine_3d">Engine 3d;</a></li></h3>
-                        <div class="conteudo_escondido">&emsp;Foi uma <i>engine</i> que desenvolvi do zero. No projeto, importo apenas a biblioteca <i>pygame</i> para traçar linhas e polígonos.
-                            </br> 
-                            &emsp;Utilizo um sistema de coordenadas tridimensionais e projeto-o em um plano 2D que é renderizado pelo <i>pygame</i>. Se estiver interessado em executar o código,
-                            também é necessário baixar o módulo <i>matrix</i> que criei para a manipulação de vetores e matrizes. Todos os arquivos estão na mesma pasta e possuem extensão <i>.py</i>. 
-                            Portanto, para testá-lo, é necessário ter o <i>Python</i> e o <i>pygame</i> instalados no seu computador.
-                            Dentro da pasta, há um vídeo que demonstra a translação de um triângulo e um quadrado.</div>
-                    </div>
-
-                    <div class = "escondido">
-                        <h3><li><a class = link href = "https://github.com/IanAguiar-ai/render">Render 3d;</a></li></h3>
-                        <div class="conteudo_escondido">
-                            &emsp;Após os testes com a engine 3D, desenvolvi este novo programa de renderização, que leva em consideração fontes de luz. O algoritmo, embora não altamente otimizado, permite programar movimentos de luz, renderizar a cena e visualizar o resultado em um arquivo MP4.
-                        </div>
-                    </div>
-
-                    <div class = "escondido">
-                        <h3><li><a class = link href = "https://github.com/IanAguiar-ai/Self_Organizing_Maps"><i>Self Organizing Maps</i> do zero;</a></li></h3>
-                        <div class="conteudo_escondido">&emsp;Self-Organizing Maps (SOM), também conhecidos como Mapas Auto-Organizáveis ou Redes de Kohonen,
-                            são algoritmos de aprendizado de máquina não supervisionados. Este projeto foi desenvolvido do zero com algumas diferenças em relação às abordagens tradicionais.
-                            Uma das principais diferenças é que a grade gerada para os neurônios é sempre quadrada e não aleatória. Além disso, a função de atração dos neurônios é discreta,
-                            e para a classificação, o algoritmo faz uso de um dendrograma que facilita a escolha de quantidades específicas
-                            de grupos (<a class = link href = 'https://github.com/IanAguiar-ai/Self_Organizing_Maps/blob/main/example/example.ipynb'>Para um exemplo, clique aqui</a>).
-                        </div>
-                    </div>
-
-                    <div class = "escondido">
-                        <h3><li><a class = link href = "https://drive.google.com/drive/folders/1h-PdKs-uDdHQJZc_K_2YQqBkVuk2jJO8?usp=sharing">Conversor <i>txt</i> para <i>png</i> e vice-versa;</a></li></h3>
-                        <div class="conteudo_escondido">&emsp;Dentro desse link tem dois conversores, um monocromático e um <i>RGB</i>, os dois funcionam da mesma forma, você escolhe um arquivo <i>txt</i> 
-                            transforma ele em um <i>png</i> e vice-versa. O código não aceita erros na hora de colocar os nomes do <i>txt</i> ou do <i>png</i>!</div>
-                    </div>
-                </ul>
-
-                <!-- Vídeos e Imagens -->
-                <strong><h2>Imagens dos Programas:</h2></strong>
-
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/esconder_img.PNG">
-                            <img src = "assets/imagens/proj_img/esconder_img.PNG">
-                        </a>
-                        <div class = "texto_img"><u>Escondedor de Imagens</u></div>
-                    </div>
+        <h2>Publicações</h2>
+        <div class="grid-visual">
+            <section class="card">
+                <h3>Quantized Clustering Trajectories</h3>
+                <p>Algoritmo voltado para o agrupamento (clustering) de trajetórias utilizando técnicas de quantização para otimizar o processamento e a análise de caminhos complexos em conjuntos de dados espaciais.</p>
+                <div class="links-projeto">
+                    <a href="https://github.com/IanAguiar-ai/Quantized_Clustering_Trajectories" target="_blank" class="btn-git">Ver Repositório</a>
                 </div>
+                <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Machine Learning, Mineração de Dados, Classificação.</p>
+            </section>
 
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/som_img.PNG">
-                            <img src = "assets/imagens/proj_img/som_img.PNG">
-                        </a>
-                        <div class = "texto_img"><u>Vizualizando o SOM</u></div>
-                    </div>
+            <section class="card">
+                <h3>Cycle-Based Compressor <span class="badge">Novo</span></h3>
+                <p>Desenvolvimento de um compressor de dados para protocolos de IoT baseado na identificação e codificação de ciclos.</p>
+                <div class="links-projeto">
+                    <a href="https://github.com/IanAguiar-ai/Cycle-Based_Compressor" target="_blank" class="btn-git">Ver Repositório</a>
                 </div>
+                <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Compressão de Dados, IoT, Sistemas Embarcados.</p>
+            </section>
+        </div>
 
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/videos/Eng_vid.gif">
-                            <img src = "assets/imagens/videos/Eng_vid.gif">
-                        </a>
-                        <div class = "texto_img"><u>Engine 3d do Zero</u></div>
-                    </div>
-                </div>
+        <h2>Computação Gráfica do Zero</h2>
+        <div class="grid-visual">
+            <section class="card img-card">
+                <img src="assets/imagens/videos/cubo_bem_comprimido.gif" alt="Render 3D">
+                <h3>Render 3D com Luz</h3>
+                <p>Sistema de renderização desenvolvido do zero que processa fontes de luz dinâmicas e projeta sombras. O motor realiza cálculos de translação e rotação matricial para gerar cenas em 3D sem bibliotecas gráficas externas.</p>
+                <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Computação Gráfica.</p>
+            </section>
 
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/som_cluster.png">
-                            <img src = "assets/imagens/proj_img/som_cluster.png">
-                        </a>
-                        <div class = "texto_img"><u>Cluster pelo SOM</u></div>
-                    </div>
-                </div>
+            <section class="card img-card">
+                <img src="assets/imagens/videos/Eng_vid.gif" alt="Engine 3D">
+                <h3>Engine Wireframe 3D</h3>
+                <p>Protótipo inicial focado em projeção de coordenadas tridimensionais em planos 2D, utilizando uma biblioteca de matrizes proprietária.</p>
+                <p style="font-size: 0.85rem; margin-top: 10px; color: #94a3b8;">Tecnologias: Computação Gráfica.</p>
+            </section>
+        </div>
 
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "https://drive.google.com/file/d/1gFzjagu0jNnqlNC26BUKrEmf0fr5ZyW3/view?usp=drive_link">
-                            <img src = "assets/imagens/proj_img/neural_network.PNG">
-                        </a>
-                        <div class = "texto_img"><u>Rede Neural Artificial do Zero</u></div>
-                    </div>
-                </div>
+        <h2>Quer ver mais?</h2>
+        <section class="github-footer">
+            <p>Meu GitHub possui diversos outros projetos em C e Python, desde criptografia por aritmética modular até redes neurais do zero.</p>
+            <br>
+            <a href="https://github.com/IanAguiar-ai?tab=repositories" class="btn-git" style="padding: 15px 30px; font-size: 1.1rem;">Explorar Repositórios no GitHub</a>
+        </section>
+        <p class="disclaimer">HTML e CSS do site feito com auxilio de ferramenta de LLM</p>
 
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/proj_img/previsao.png">
-                            <img src = "assets/imagens/proj_img/previsao.png">
-                        </a>
-                        <div class = "texto_img"><u>Previsão de Séries Temporais com Cadeias de Markov</u></div>
-                    </div>
-                </div>
-                
-                <div class = "responsivo1">
-                    <div class = "galeria">
-                        <a target = "_blank" href = "assets/imagens/videos/cubo_bem_comprimido.gif">
-                            <img src = "assets/imagens/videos/cubo_bem_comprimido.gif">
-                        </a>
-                        <div class = "texto_img"><u>Render do zero</u></div>
-                    </div>
-                </div>
+    </main>
 
-                <div class = "descricao"> <div>
-                <p class = "termina_imagem"></p>
-                <hr class = "linha_de_quebra"/>
+    <script src="assets/js/mesh_by_bellman.js"></script>
 
-            <hr class = "linha_de_quebra"/>
+    <script>
+        function ativarFoco() {
+            document.body.classList.add('foco-ativo');
+            
+            // Reinicia a simulação se a função init() existir no seu mesh_by_bellman.js
+            if (typeof init === 'function') {
+                init();
+            }
+        }
 
-            </ul> <!-- Fundo de papel -->
-
-    </body>
-
-    <!-- Scripts -->
-    
-
+        // Clique no fundo para voltar ao normal
+        document.getElementById('mesh').addEventListener('click', function() {
+            document.body.classList.remove('foco-ativo');
+        });
+    </script>
+</body>
 </html>

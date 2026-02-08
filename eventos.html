@@ -1,101 +1,186 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos | Ian Aguiar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-dark: #0f172a;
+            --sidebar-width: 250px;
+            --sidebar-collapsed: 60px;
+            --text-light: #f8fafc;
+        }
 
-<html lang = "pt-BR">   
-    <head>
-        <meta charset = "UTF-8" http-equiv = "refresh" content = "1800">
-        <meta name = "viewport" content = "width/device-width, initial-scale = 1.0">
-        <link rel = "stylesheet" href = "assets/css/style.css">
-        <title>Currículo Ian dos Anjos Melo Aguiar</title>
-    </head>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-light); display: flex; min-height: 100vh; overflow-x: hidden; }
 
-    <body id = "fundo">
-            
-        <div class="tab">
-            <button class="tablinks" onclick="window.location.href='index.html'">Informações</button>
-            <button class="tablinks" onclick="window.location.href='projetos.html'">Projetos</button>
-            <button class="tablinks" onclick="window.location.href='eventos.html'">Eventos</button>
-            <button class="tablinks" onclick="window.location.href='certificacoes.html'">Certificações</button>
-            <button class="tablinks" onclick="window.location.href='contato.html'">Contato</button>
-        </div>        
+        /* --- CANVAS DE FUNDO --- */
+        #mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.2; pointer-events: none;
+        }
 
-        <ul id="papel">
-            
-            <strong><h2>Palestras:</h2></strong>
-            <ul>
-                <h3><strong>SEMEST (Semana da Matemática Aplicada) (2024)</strong></h3>
-                <div align="justify">
-                    &emsp;Fui convidado pela empresa na qual trabalhava, a OneRF, para apresentar uma palestra na Semana da Matemática Aplicada sobre a solução de problemas de otimização em redes mesh utilizando técnicas de matemática aplicada.
-                    </br>
-                    &emsp;A apresentação, com duração aproximada de 50 minutos, abordou a resolução de problemas topológicos por meio de conceitos de teoria dos grafos, algoritmos de menor caminho e estatística.
+        /* --- MENU LATERAL (Sidebar) --- */
+        #sidebar {
+            width: var(--sidebar-collapsed);
+            height: 100vh;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed; left: 0; top: 0; overflow: hidden;
+            border-right: 1px solid rgba(255,255,255,0.1); z-index: 1000;
+        }
+
+        #sidebar:hover { width: var(--sidebar-width); }
+
+        #sidebar .nav-links li a span {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            visibility: hidden;
+            white-space: nowrap;
+        }
+
+        #sidebar:hover .nav-links li a span {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-btn { padding: 20px; display: flex; flex-direction: column; gap: 5px; }
+        .bar { width: 25px; height: 3px; background: var(--primary); border-radius: 2px; }
+
+        .nav-links { list-style: none; margin-top: 30px; width: var(--sidebar-width); }
+        .nav-links li a {
+            padding: 15px 20px; display: flex; align-items: center;
+            color: var(--text-light); text-decoration: none; transition: 0.2s;
+        }
+        .nav-links li a:hover { background: rgba(255,255,255,0.1); color: var(--primary); }
+
+        /* --- CONTEÚDO --- */
+        main { flex-grow: 1; margin-left: var(--sidebar-collapsed); padding: 40px 20px; z-index: 5;}
+
+        h1 { color: var(--primary); margin-bottom: 30px; font-size: 2rem; }
+        
+        /* A BARRINHA AZUL NO TÍTULO */
+        h2 { 
+            margin: 40px 0 20px 0; 
+            font-size: 1.5rem; 
+            border-left: 4px solid var(--primary); /* A barrinha azul */
+            padding-left: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        
+        .card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(5px);
+            padding: 25px; border-radius: 16px; margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            line-height: 1.6;
+        }
+
+        .card h3 { color: var(--primary); margin-bottom: 10px; }
+
+        .bloco-com-imagem {
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .foto-evento {
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+
+        .foto-evento:hover { transform: scale(1.05); }
+
+        /* Responsividade Celular */
+        @media (max-width: 768px) {
+            main { padding: 20px; }
+            .bloco-com-imagem { grid-template-columns: 1fr; }
+            .foto-evento { order: -1; } 
+        }
+
+        /* Estilo do Disclaimer */
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="mesh"></canvas>
+
+    <nav id="sidebar">
+        <div class="menu-btn"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 <span>&nbsp; Informações</span></a></li>
+            <li><a href="projetos.html">🚀 <span>&nbsp; Projetos</span></a></li>
+            <li><a href="eventos.html">📅 <span>&nbsp; Eventos</span></a></li>
+            <li><a href="certificacoes.html">📜 <span>&nbsp; Certificações</span></a></li>
+            <li><a href="contato.html">📧 <span>&nbsp; Contato</span></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Eventos e Participações</h1>
+
+        <h2>Palestras</h2>
+        <section class="card">
+            <h3>SEMEST (Semana da Matemática Aplicada) - 2024</h3>
+            <p>Fui convidado pela empresa na qual trabalhava, a OneRF, para apresentar uma palestra na Semana da Matemática Aplicada sobre a solução de problemas de otimização em redes mesh utilizando técnicas de matemática aplicada.
+ A apresentação, com duração aproximada de 50 minutos, abordou a resolução de problemas topológicos por meio de conceitos de teoria dos grafos, algoritmos de menor caminho e estatística.</p>
+        </section>
+
+        <h2>Congressos Científicos</h2>
+        <section class="card">
+            <div class="bloco-com-imagem">
+                <div class="texto">
+                    <h3>SIoT (Symposium on Internet of Things) - 2025</h3>
+                    <p>Apresentação do paper <strong>"Quantized Clustering of GNSS Bus Trajectories"</strong>. O trabalho propõe uma técnica de aprendizado de máquina e mineração de dados para segmentar rotas de ônibus a partir de grandes volumes de dados de trajetórias.</p>
                 </div>
-                </p>
-            </ul>
+                <img class="foto-evento" src="assets/imagens/eu/siot.jpeg" alt="Foto SIoT">
+            </div>
+        </section>
 
-            <strong><h2>Congressos Científicos :</h2></strong>
-            <ul>
-                <h3><strong>SIoT (Simpósio internacional de Internet of Things)</strong></h3>
-
-                <div class="bloco-com-imagem">
-                    <div class="texto" align="justify">
-                        &emsp; Apresentei o paper "Quantized Clustering of GNSS Bus Trajectories", em que proponho uma técnica para identificar e segmentar tipos de rotas a partir de um grande conjunto de trajetórias.
-                    </div>
-
-                    <img class="foto-evento" src="assets/imagens/eu/siot.jpeg" alt="Foto SIoT">
+        <h2>Participação em Feiras</h2>
+        
+        <section class="card">
+            <div class="bloco-com-imagem">
+                <div class="texto">
+                    <h3>UPA (UNICAMP de Portas Abertas) - 2025</h3>
+                    <p>Apresentação de soluções para viabilização de frotas de ônibus elétricos no contexto do laboratório vivo de mobilidade urbana da UNICAMP.</p>
                 </div>
-                </p>
-            </ul>
+                <img class="foto-evento" src="assets/imagens/eu/upa_2025.jpeg" alt="UPA 2025">
+            </div>
+        </section>
 
-            <strong><h2>Participação em Feiras:</h2></strong>
-            <ul>
+        <section class="card">
+            <h3>Congresso PIBIC - 2023</h3>
+            <p>Apresentação da técnica <strong>Self-Organizing Maps (SOM)</strong> aplicada à classificação de poços aquíferos. O estudo destacou o uso de redes neurais não supervisionadas em variáveis hidroquímicas.</p>
+        </section>
 
-                <h3><strong>UPA (UNICAMP de Portas Abertas) (2025)</strong></h3>
+        <section class="card">
+            <h3>Bentotec - 2019</h3>
+            <p>Desenvolvimento e apresentação de um protótipo de gerador eólico para rodovias, visando captar a energia cinética de veículos em movimento.</p>
+        </section>
 
-                <div class="bloco-com-imagem">
-                    <div class="texto" align="justify">
-                        Em 2025, tive a oportunidade de apresentar solucoes para a viabilizacao de frotas de onibus eletricos junto ao laboratorio vivo de mobilidade urbana.
-                    </div>
+        <section class="card">
+            <h3>Bentotec - 2017</h3>
+            <p>Desenvolvimento do código para uma garra mecânica automatizada de organização de objetos por cor, demonstrando conceitos de automação residencial e industrial.</p>
+        </section>
 
-                    <img class="foto-evento" src="assets/imagens/eu/upa_2025.jpeg" alt="Foto UPA 2025">
-                </div>
-                </p>
+    <p class="disclaimer">HTML e CSS do site feito com auxilio de ferramenta de LLM</p>
+    </main>
 
-                <h3><strong>Congresso PIBIC (2023)</strong></h3>
-                <div align = "justify">
-                    &emsp;Evento voltado à apresentação de trabalhos de iniciação científica desenvolvidos na Universidade Estadual de Campinas (UNICAMP).
-                    </br>
-                    &emsp;No congresso, apresentei a técnica Self-Organizing Maps (SOM) aplicada à classificação de poços aquíferos utilizando exclusivamente variáveis hidroquímicas. O trabalho abordou as vantagens e desvantagens dessa abordagem, que se baseia em uma rede neural não supervisionada, destacando seus limites tanto para classificação autônoma quanto como ferramenta de apoio na análise de poços aquíferos.
-                </div>
-                </p>
-
-                <h3><strong>UPA (UNICAMP de Portas Abertas) (2023)</strong></h3>
-                <div align = "justify">
-                    &emsp;Em 2023, tive a oportunidade de apresentar meu trabalho de iniciação científica na UPA. Nessa ocasião, expus o tema "Classificação de Poços Aquíferos Usando Técnicas de Aprendizado de Máquina" para um público diverso, composto tanto por especialistas na área quanto por pessoas que tiveram seu primeiro contato com o assunto.
-                    </br>
-                    &emsp;A experiência foi extremamente enriquecedora, permitindo-me esclarecer dúvidas de diversos participantes e, ao mesmo tempo, conhecer diferentes perspectivas sobre o problema, ampliando minha compreensão do tema.
-                </div>
-                </p>
-
-                <h3><strong>Bentotec (2019)</strong></h3>
-                <div align = "justify">
-                    &emsp;O foco do trabalho foi a apresentação da viabilidade da inserção de energia eólica em estradas.
-                    </br>
-                    &emsp;O projeto incluiu o desenvolvimento de um protótipo de gerador eólico construído do zero, com um design otimizado para captar a energia cinética de veículos em movimento ao longo das rodovias. A demonstração teve como objetivo ilustrar para o público como a infraestrutura viária pode ser utilizada para a geração de energia, potencialmente abastecendo bairros e outras áreas urbanas.
-                    </br>
-                    &emsp;A feira contou com um grande público e ocorreu ao longo de três dias, com apresentações contínuas desde a manhã até a noite.
-                </div>
-                </p>
-
-                <h3><strong>Bentotec (2017)</strong></h3>
-                <div align = "justify">
-                    &emsp;Contribuí para o desenvolvimento do código de uma garra mecânica projetada para organizar copos.
-                    </br>
-                    &emsp;Durante a feira de ciências, tive a oportunidade de apresentar o projeto, demonstrando, como entusiasta da automação, o potencial das máquinas para facilitar o cotidiano. O sistema foi desenvolvido para lidar com copos de diferentes cores, permitindo que os espectadores os desorganizassem e, em seguida, observassem a garra reorganizá-los automaticamente, evidenciando a aplicabilidade da automação na solução de tarefas do dia a dia.
-                </div>
-                </p>
-
-            </ul>
-
-        </ul> <!-- Fundo de papel -->
-
-    </body>
+</body>
 </html>

@@ -1,119 +1,183 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificações | Ian Aguiar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-dark: #0f172a;
+            --sidebar-width: 250px;
+            --sidebar-collapsed: 60px;
+            --text-light: #f8fafc;
+        }
 
-<html lang = "pt-BR">   
-    <head>
-        <meta charset = "UTF-8" http-equiv = "refresh" content = "1800">
-        <meta name = "viewport" content = "width/device-width, initial-scale = 1.0">
-        <link rel = "stylesheet" href = "assets/css/style.css">
-        <title>Currículo Ian dos Anjos Melo Aguiar</title>
-    </head>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-light); display: flex; min-height: 100vh; }
 
-    <body id = "fundo">
+        /* --- SIDEBAR --- */
+        #sidebar {
+            width: var(--sidebar-collapsed);
+            height: 100vh;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            transition: width 0.3s ease;
+            position: fixed; left: 0; top: 0; overflow: hidden;
+            border-right: 1px solid rgba(255,255,255,0.1); z-index: 1000;
+        }
+
+        #sidebar:hover { width: var(--sidebar-width); }
+
+        #sidebar .nav-links li a span {
+            opacity: 0; transition: opacity 0.2s; visibility: hidden; white-space: nowrap;
+        }
+
+        #sidebar:hover .nav-links li a span { opacity: 1; visibility: visible; }
+
+        .menu-btn { padding: 20px; display: flex; flex-direction: column; gap: 5px; }
+        .bar { width: 25px; height: 3px; background: var(--primary); border-radius: 2px; }
+
+        .nav-links { list-style: none; margin-top: 30px; }
+        .nav-links li a {
+            padding: 15px 20px; display: flex; align-items: center;
+            color: var(--text-light); text-decoration: none; transition: 0.2s;
+        }
+        .nav-links li a:hover { background: rgba(255,255,255,0.1); color: var(--primary); }
+
+        /* --- GRID DE CERTIFICADOS --- */
+        main { flex-grow: 1; margin-left: var(--sidebar-collapsed); padding: 40px 20px; }
+
+        h1 { color: var(--primary); margin-bottom: 40px; font-size: 2rem; }
+
+        .certificados-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .galeria-card {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, border-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .galeria-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        .galeria-card:hover img { opacity: 0.8; }
+
+        .texto-img {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+
+        /* Ajustes Mobile */
+        @media (max-width: 768px) {
+            main { padding: 20px; }
+            .certificados-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Estilo do Disclaimer */
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="sidebar">
+        <div class="menu-btn"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 <span>&nbsp; Informações</span></a></li>
+            <li><a href="projetos.html">🚀 <span>&nbsp; Projetos</span></a></li>
+            <li><a href="eventos.html">📅 <span>&nbsp; Eventos</span></a></li>
+            <li><a href="certificacoes.html">📜 <span>&nbsp; Certificações</span></a></li>
+            <li><a href="contato.html">📧 <span>&nbsp; Contato</span></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Certificações</h1>
+
+        <div class="certificados-grid">
             
-        <div class="tab">
-            <button class="tablinks" onclick="window.location.href='index.html'">Informações</button>
-            <button class="tablinks" onclick="window.location.href='projetos.html'">Projetos</button>
-            <button class="tablinks" onclick="window.location.href='eventos.html'">Eventos</button>
-            <button class="tablinks" onclick="window.location.href='certificacoes.html'">Certificações</button>
-            <button class="tablinks" onclick="window.location.href='contato.html'">Contato</button>
-        </div>        
+            <a href="assets/imagens/Certificados/certificado_ciencia_de_dados_frente.jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/certificado_ciencia_de_dados_frente.jpg" alt="Ciência de Dados"></div>
+                <div class="texto-img">Ciência de Dados</div>
+            </a>
 
-            <ul id = "papel">
-                <!-- Certificações -->
+            <a href="assets/imagens/Certificados/Excel_Intermediario_1.jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/Excel_Intermediario_1.jpg" alt="Excel Intermediário 1"></div>
+                <div class="texto-img">Excel Intermediário 1</div>
+            </a>
 
-                <strong><p class = "topico">Certificações:</p></strong>
+            <a href="assets/imagens/Certificados/Excel_Intermediario_2.jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/Excel_Intermediario_2.jpg" alt="Excel Intermediário 2"></div>
+                <div class="texto-img">Excel Intermediário 2</div>
+            </a>
 
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/certificado_ciencia_de_dados_frente.jpg">
-                                <img src = "assets/imagens/Certificados/certificado_ciencia_de_dados_frente.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Ciência de Dados</u></div>
-                        </div>
-                    </div>  
+            <a href="assets/imagens/Certificados/Excel_Avancado.jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/Excel_Avancado.jpg" alt="Excel Avançado"></div>
+                <div class="texto-img">Excel Avançado</div>
+            </a>
 
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Excel_Intermediario_1.jpg">
-                                <img src = "assets/imagens/Certificados/Excel_Intermediario_1.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Excel Intermediário 1</u></div>
-                        </div>
-                    </div>  
-                    
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Excel_Intermediario_2.jpg">
-                                <img src = "assets/imagens/Certificados/Excel_Intermediario_2.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Excel Intermediário 2</u></div>
-                        </div>
-                    </div> 
+            <a href="assets/imagens/Certificados/Mercado_Financeiro.jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/Mercado_Financeiro.jpg" alt="Mercado Financeiro"></div>
+                <div class="texto-img">Investimento nos Mercados Financeiros</div>
+            </a>
 
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Excel_Avancado.jpg">
-                                <img src = "assets/imagens/Certificados/Excel_Avancado.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Excel Avançado</u></div>
-                        </div>
-                    </div> 
+            <a href="assets/imagens/Certificados/SQL_(MYSQL).jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/SQL_(MYSQL).jpg" alt="SQL"></div>
+                <div class="texto-img">SQL (MySQL)</div>
+            </a>
 
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Mercado_Financeiro.jpg">
-                                <img src = "assets/imagens/Certificados/Mercado_Financeiro.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Investimento nos Mercados Financeiros</u></div>
-                        </div>
-                    </div> 
+            <a href="assets/imagens/Certificados/Base_de_Dados_Com_Python.jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/Base_de_Dados_Com_Python.jpg" alt="Python DB"></div>
+                <div class="texto-img">Base de Dados com Python</div>
+            </a>
 
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/SQL_(MYSQL).jpg">
-                                <img src = "assets/imagens/Certificados/SQL_(MYSQL).jpg">
-                            </a>
-                            <div class = "texto_img"><u>SQL</u></div>
-                        </div>
-                    </div> 
+            <a href="assets/imagens/Certificados/Machine_Learning_Pipelines_Azure.jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/Machine_Learning_Pipelines_Azure.jpg" alt="Azure ML"></div>
+                <div class="texto-img">Machine Learning com Azure</div>
+            </a>
 
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Base_de_Dados_Com_Python.jpg">
-                                <img src = "assets/imagens/Certificados/Base_de_Dados_Com_Python.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Base de Dados com Python</u></div>
-                        </div>
-                    </div>
+            <a href="assets/imagens/Certificados/Deep_Learning.jpg" target="_blank" class="galeria-card">
+                <div class="img-container"><img src="assets/imagens/Certificados/Deep_Learning.jpg" alt="Deep Learning"></div>
+                <div class="texto-img">Aprendizado Profundo e Redes Neurais</div>
+            </a>
 
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Machine_Learning_Pipelines_Azure.jpg">
-                                <img src = "assets/imagens/Certificados/Machine_Learning_Pipelines_Azure.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Machine Learning com Azure</u></div>
-                        </div>
-                    </div>
+        </div>
+    <p class="disclaimer">HTML e CSS do site feito com auxilio de ferramenta de LLM</p>
+    </main>
 
-                    <div class = "responsivo2">
-                        <div class = "galeria">
-                            <a target = "_blank" href = "assets/imagens/Certificados/Deep_Learning.jpg">
-                                <img src = "assets/imagens/Certificados/Deep_Learning.jpg">
-                            </a>
-                            <div class = "texto_img"><u>Aprendizado Profundo e Redes Neurais</u></div>
-                        </div>
-                    </div>
-                <div class = "descricao"> <div>
-
-            <hr class = "linha_de_quebra"/>
-
-            <p>.
-
-            </ul> <!-- Fundo de papel -->
-
-    </body>
-
-    <!-- Scripts -->
-    
-
+</body>
 </html>

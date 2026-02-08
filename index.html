@@ -1,206 +1,254 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo | Ian dos Anjos Melo Aguiar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-dark: #0f172a;
+            --sidebar-width: 250px;
+            --sidebar-collapsed: 60px;
+            --text-light: #f8fafc;
+        }
 
-<html lang = "pt-BR">   
-    <head>
-        <meta charset = "UTF-8" http-equiv = "refresh" content = "1800">
-        <meta name = "viewport" content = "width/device-width, initial-scale = 1.0">
-        <link rel = "stylesheet" href = "assets/css/style.css">
-        <title>Currículo Ian dos Anjos Melo Aguiar</title>
-    </head>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
-    <body id = "fundo">
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- MENU LATERAL --- */
+        #sidebar {
+            width: var(--sidebar-collapsed);
+            height: 100vh;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            z-index: 1000;
+        }
+
+        #sidebar:hover {
+            width: var(--sidebar-width);
+        }
+
+        .menu-btn {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .bar { width: 25px; height: 3px; background: var(--primary); border-radius: 2px; }
+
+        /* Esconde o texto por padrão */
+        #sidebar .nav-links li a span {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            visibility: hidden; /* Evita que o mouse clique em algo invisível */
+        }
+
+        /* Mostra o texto quando o sidebar sofrer hover */
+        #sidebar:hover .nav-links li a span {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-top: 30px;
+            width: var(--sidebar-width);
+        }
+
+        .nav-links li a {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: 0.5s;
+            white-space: nowrap;
+        }
+
+        .nav-links li a:hover { background: rgba(255,255,255,0.1); color: var(--primary); }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        main {
+            flex-grow: 1;
+            margin-left: var(--sidebar-collapsed);
+            padding: 40px 20px;
+            /*max-width: 900px;*/
+            transition: margin 0.3s;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .minha-foto {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        h1 { font-size: 2rem; margin-bottom: 10px; color: var(--primary); }
+
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        h2 { margin-bottom: 15px; font-size: 1.5rem; border-left: 4px solid var(--primary); padding-left: 15px; }
+
+        .formacao-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .formacao-table td {
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-em-texto { width: 25px; vertical-align: middle; margin-right: 10px; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            main { padding: 20px; }
+            .formacao-table td { display: block; width: 100%; }
+        }
+
+        /* Estilo do Disclaimer */
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="sidebar">
+        <div class="menu-btn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 <span>&nbsp; Informações</span></a></li>
+            <li><a href="projetos.html">🚀 <span>&nbsp; Projetos</span></a></li>
+            <li><a href="eventos.html">📅 <span>&nbsp; Eventos</span></a></li>
+            <li><a href="certificacoes.html">📜 <span>&nbsp; Certificações</span></a></li>
+            <li><a href="contato.html">📧 <span>&nbsp; Contato</span></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="profile-header">
+            <img class="minha-foto" src="assets/imagens/eu/IAN_2.png" alt="Ian Aguiar">
+            <h1>Ian A. M. Aguiar</h1>
+        </section>
+
+        <section class="card">
+            <h2>Sobre mim</h2>
+            <p>
+                Olá, meu nome é Ian e atualmente sou estudante de mestrado em Engenharia da Computação na UNICAMP. 
+                Tenho uma grande afinidade por explorar novas ideias e aprender por meio de observações e experimentações. 
+                Abordo problemas diversos de maneira criativa e eficiente, com foco em áreas como Aprendizado de Máquina, Redes Neurais, Mineração de Dados, Sistemas Embarcados e Otimização.
+            </p>
+            <br>
+            <p>
+                Sou apaixonado por construir coisas do zero e discutir ideias. No meu tempo livre, dedico-me a projetos pessoais, 
+                leitura de livros técnicos e filosofia, além de ter uma forte ligação com a música, do violão clássico ao violino.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Formação Acadêmica</h2>
+            <table class="formacao-table">
+                <tr>
+                    <td>
+                        <img class="logo-em-texto" src="assets/imagens/logos/Unicamp.png" alt="UNICAMP">
+                        <strong>UNICAMP (FEEC)</strong><br>Mestrado em Engenharia da Computação
+                    </td>
+                    <td>1/2025 - Atualmente</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img class="logo-em-texto" src="assets/imagens/logos/Unicamp.png" alt="UNICAMP">
+                        <strong>UNICAMP (IMECC)</strong><br>Bacharelado em Estatística
+                    </td>
+                    <td>03/2020 - 12/2024</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img class="logo-em-texto" src="assets/imagens/logos/ETEC_B_Q.png" alt="ETEC">
+                        <strong>ETEC Bento Quirino</strong><br>Técnico em Eletrotécnica
+                    </td>
+                    <td>02/2017 - 12/2019</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>Experiências</h2>
             
-        <div class="tab">
-            <button class="tablinks" onclick="window.location.href='index.html'">Informações</button>
-            <button class="tablinks" onclick="window.location.href='projetos.html'">Projetos</button>
-            <button class="tablinks" onclick="window.location.href='eventos.html'">Eventos</button>
-            <button class="tablinks" onclick="window.location.href='certificacoes.html'">Certificações</button>
-            <button class="tablinks" onclick="window.location.href='contato.html'">Contato</button>
-        </div> 
-
-        <canvas id = "mesh"></canvas>
-        <script src = "assets/js/mesh_by_bellman.js"></script>
-
-            <ul id = "papel">
-
-                <!-- Titulo e foto -->
-                <img class = "minha_foto" src = "assets/imagens/eu/IAN_2.png" >
-                <strong><h1><ins class = "meu_nome" id = "nome">Ian dos Anjos Melo Aguiar</ins></h1></strong>
-                <br/>
-                
-                <!-- Informações -->
-                <strong><h2>Sobre mim:</h2></strong>
-                <h3 align = "justify">&emsp;Olá, meu nome é Ian e atualmente sou estudante de mestrado em Engenharia da Computação na UNICAMP.
-                    </br>
-                    &emsp;Tenho uma grande afinidade por explorar novas ideias e aprender por meio de observações e experimentações. No meu tempo livre, dedico-me ao desenvolvimento e aprimoramento de projetos pessoais, além de estudar, de forma independente, temas que me fascinam, como Redes Neurais, Criptografia, Compressão de Dados, Machine Learning, Otimização de Códigos, Grafos, Processos Estocásticos e Estimadores Matemáticos. Esse repertório técnico me permite abordar e resolver problemas diversos de maneira criativa e eficiente.
-                    </br>
-                    &emsp;Sou apaixonado por construir coisas do zero, discutir ideias e filosofar. Tenho interesse por livros técnicos, de filosofia e de economia. Já estudei música por conta própria, com foco em violão clássico, ocasionalmente componho no teclado ou arranho um pouco no violino.
-                <hr class = "linha_de_quebra"/>
-
-                <h2>Formação Acadêmica:</h2>
-
-                <div class="formacao-container">
-                    <table class="formacao-table">
-                        <tr>
-                            <th>Instituição</th>
-                            <th>Período</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="logo-em-texto" src="assets/imagens/logos/Unicamp.png" alt="UNICAMP">
-                                UNICAMP (FEEC) - Mestrado em Engenharia da Computação
-                            </td>
-                            <td>1/2025 - Atualmente</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="logo-em-texto" src="assets/imagens/logos/Unicamp.png" alt="UNICAMP">
-                                UNICAMP (IMECC) - Bacharelado em Estatística
-                            </td>
-                            <td>03/2020 - 12/2024</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="logo-em-texto" src="assets/imagens/logos/ETEC_B_Q.png" alt="ETEC Bento Quirino">
-                                ETEC Bento Quirino - Técnico em Eletrotécnica
-                            </td>
-                            <td>02/2017 - 12/2019</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <hr class = "linha_de_quebra"/>
-
-                <!-- Experiências -->
-                <strong><h2>Experiências:</h2></strong>
+            <div class="experiencia-item">
+                <h3>Pesquisador (Bolsa MOVER)</h3>
+                <span class="local">DSE | FEEC - UNICAMP (2025 - Atualmente)</span>
                 <ul>
-                        <h3><strong>Pesquisador (2025 - atualmente)</strong></h3>
-                        <strong>(Bolsa MOVER) Departamento de Sistemas e Energia (DSE|FEEC), UNICAMP</strong>
-                            <li>Desenvolvimento de métricas para detectar anomalias em baterias de íons de ferro fosfato.</li>
-                            <li>Elaboração de índices para otimização do consumo de energia em veículos elétricos.</li>
-                            <li>Elaboração de indicadores para operação de veículos elétricos.</li>
-                            <li>algoritmos diversos para operação de veículos urbanos.</li>                     
-                        </p>
-
-                        <h3><strong>Desenvolvedor de Firmware (2023 - 2024)</strong></h3>
-                        <strong>(Estágio) OneRF, Campinas - SP</strong>
-                            <li>Desenvolvi firmwares em C para projetos de IoT voltados para Smart Grid e telemetria usando rede mesh.</li>
-                            <li>Criei softwares em Python para homologação de firmwares e soluções usando Machine Learning e teorias de grafos para apoiar decisões da equipe de operações.</li>
-                            <li>Otimizei algoritmos para sistemas embarcados, focando em processamento e uso eficiente de memória.</li>
-                            <li>Análise de dados por meio de API interna da empresa para auxiliar na tomada de decisão do time de operações.</li>
-                        
-                        </p>
-
-                        <h3><strong>Modelagem de Custos de Tecnologia da Informação e Comunicação da Unicamp (2024)</strong></h3>
-                        <strong>(Consultoria) UNICAMP, CCUEC</strong>
-                            <li>O trabalho busca analisar e otimizar a alocação de recursos financeiros destinados à Tecnologia da Informação e Comunicação (TIC) na Unicamp, que representa cerca de 3% do orçamento anual da universidade. Por meio da modelagem de custos e análises estatísticas, pretende-se aprimorar a gestão financeira, permitindo um controle mais eficiente, planejamento orçamentário estratégico e avaliação da eficácia dos investimentos. Além disso, a abordagem oferece justificativas baseadas em evidências para novos investimentos, contribuindo para a melhoria dos serviços e processos da universidade.</li>
-                        </p>
-
-                        <h3><strong>Pesquisa de Iniciação Científica (2022 - 2023)</strong></h3>
-                        <strong>(Bolsa PIBIC) Faculdade de Engenharia Elétrica e de Computação (FEEC), UNICAMP</strong>
-                            <li>Conduzi pesquisas sobre redes neurais não supervisionadas aplicadas à classificação de poços aquíferos.</li>
-                            <li>Implementei soluções do zero em Python.</li>
-                            <li>Automatizei e corrigi grandes volumes de dados provenientes da CETESB para uso na pesquisa.</li>
-                        </p>
-
-                        <h3><strong>Aulas particulares de <i>Python</i> (2022)</strong></h3>
+                    <li>Desenvolvimento de métricas para detecção de anomalias em baterias de íons de ferro fosfato.</li>
+                    <li>Otimização de consumo e elaboração de indicadores para veículos elétricos.</li>
+                    <li>Mineração e classificação de dados para operação de veículos elétricos.</li>
                 </ul>
-                <hr class = "linha_de_quebra"/>
+            </div>
 
-                <!-- Conhecimentos -->
-                <strong><h2>Linguagens de Programação:</h2></strong>
+            <div class="experiencia-item" style="margin-top: 25px;">
+                <h3>Desenvolvedor de Firmware (Estágio)</h3>
+                <span class="local">OneRF, Campinas - SP (2023 - 2024)</span>
                 <ul>
-                    <div class = "escondido">
-                        <h3><li><strong><i>Python</i></strong>;</li></h3>
-                        <div class="conteudo_escondido">
-                            <li><strong><i>Funções</i></strong></li>
-                            <li><strong><i>Módulos</i></strong></li>
-                            <li><strong><i>Classes</i></strong> (programação orientada a objeto)</li>
-                            <li><strong><i>Decoradores</i></strong></li>
-                            <li><strong><i>Criação e distribuição de Bibliotecas</i></strong></li>
-                            <li>Otimização de códigos usando ferramentas de <strong><i>Multithreading</i></strong>:
-                                <ul>
-                                    <li><strong><i>multiprocessing</i></strong></li>
-                                    <li><strong><i>threading</i></strong></li>
-                                    <li><strong><i>Numba</i></strong></li>
-                                </ul>
-                            </li>
-                            <li>Compilação e importação de código em linguagem de máquina</li>
-                            <li>Compilação em linguagem <strong><i>Cython</i></strong> (C + Python)</li>
-                            <li>Compilação em <strong><i>C</i></strong> com <strong><i>API</i></strong> do python <strong><i>CPython</i></strong> (C + API-Python)</li>
-                            <li>Interface gráfica com <strong><i>Tkinter</i></strong></li>
-                            <li>Ferramentas para <strong>Ciência de Dados</strong> e <strong>Aprendizado de Máquina</strong>:
-                                <ul>
-                                    <li><strong><i>Scikit-learn</i></strong></li>
-                                    <li><strong><i>Keras</i></strong></li>
-                                    <li><strong><i>Pandas</i></strong></li>
-                                    <li><strong><i>TensorFlow</i></strong></li>
-                                    <li><strong><i>Scipy</i></strong></li>
-                                    <li><strong><i>Matplotlib</i></strong></li>
-                                    <li><strong><i>Numpy</i></strong></li>
-                                </ul>
-                            </li>
-                            <li>Criação de <strong><i>API</i></strong> usando <strong><i>Flask</i></strong></li>
-                            <li>Acesso e manipulação de banco de dados <strong><i>SQL</i></strong></li>
-                            <li>Automação de rotinas</li>
-                        </div>
-                    </div>
-
-                    <div class = "escondido">
-                        <h3><li><strong><i>C</i></strong>;</h3></li>
-                        <div class="conteudo_escondido">
-                            <li><strong>Ponteiros</strong></li>
-                            <li><strong>Alocação dinâmica</strong></li>
-                            <li>Criação de <strong>Estruturas de Dados</strong>:
-                                <ul>
-                                    <li>Listas simples</li>
-                                    <li>Listas circulares</li>
-                                    <li>Pilhas</li>
-                                    <li>Filas</li>
-                                    <li>Árvores binárias balanceadas</li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>                    
-
-                    <div class = "escondido">
-                        <h3><li><strong><i>R</i></strong>;</h3></li>
-                        <div class="conteudo_escondido">Geração de relatórios em <strong><i>R Markdown</i></strong> com análise descritiva e preditiva, 
-                            leitura e processamento de bancos de dados em <strong><i>SQL</i></strong> ou <strong><i>.xlsx</i></strong>,
-                            manipulação e busca usando <strong><i>RSQLite</i></strong>, <strong><i>Tidy</i></strong>, <strong><i>dplyr</i></strong> entre outros.</div>
-                    </div>
-
-                    <div class = "escondido">
-                        <h3><li><strong><i>SQL</i></strong>;</h3></li>
-                        <div class="conteudo_escondido">Modelagem, normalização, criação e interação de dados com <strong><i>MySQL</i></strong> ou <strong><i>SQLite</i></strong>, 
-                            relacionamento de bancos de dados, uso de <strong><i>Store Procesure</i></strong>, <strong><i>Triggers</i></strong> e 
-                             estrutura <strong><i>ACID</i></strong> para transações.</div>
-                    </div>
-
-                    <div class = "escondido">
-                        <h3><li>Versionamento de código com o <strong><i>Github</i></strong>;</h3></li>
-                    </div>
-
-                    <h3><li><strong><i>Excel</i></strong> Avançado.</h3></li>
+                    <li>Desenvolvimento de firmwares em C para IoT e Smart Grid usando rede mesh.</li>
+                    <li>Criação de softwares em Python com Machine Learning e Teoria dos Grafos para suporte operacional.</li>
+                    <li>Otimização de algoritmos para sistemas embarcados (memória e processamento).</li>
                 </ul>
-                <hr class = "linha_de_quebra"/>
+            </div>
 
-                <!-- Competências -->
-                <!--
-                <strong><h2>Competências Comportamentais:<h2></strong>
-                    <div class = "escondido">
-                        <li>Criatividade em solucionar problemas;</li></h3>
-                        <h3><li>Trabalho em conjunto;</li></h3>
-                        <h3><li>Pontualidade e organização;</li></h3>
-                        <h3><li>Proatividade.</li></h3>
-                    </div>
-                -->
-
-            </ul> <!-- Fundo de papel -->
-
-    </body>
-
-    <!-- Scripts -->
+            <div class="experiencia-item" style="margin-top: 25px;">
+                <h3>Pesquisa de Iniciação Científica (Bolsa PIBIC)</h3>
+                <span class="local">FEEC - UNICAMP (2022 - 2023)</span>
+                <ul>
+                    <li>Pesquisa sobre redes neurais não supervisionadas aplicadas à classificação de poços aquíferos.</li>
+                    <li>Implementação de soluções do zero em Python e automação de dados da CETESB.</li>
+                </ul>
+            </div>
+        </section>
+        <p class="disclaimer">HTML e CSS do site feito com auxilio de ferramenta de LLM</p>
+            
+    </main>
     
 
+</body>
 </html>

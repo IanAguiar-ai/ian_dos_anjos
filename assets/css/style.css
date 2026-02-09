@@ -1,453 +1,423 @@
-/*.minha_foto{
-    border: 2px solid black;
-    position: absolute;
-    width: 8vw;
-    right: 15vw; 
-    transition: 2.8s;
-    transition-timing-function: ease-in-out;
-    z-index: 1;
-}*/
-
-#mesh {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: block;
-  margin: 0;
-  padding: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.45;
+:root {
+    --primary: #2563eb;
+    --bg-dark: #0f172a;
+    --sidebar-width: 250px;
+    --sidebar-collapsed: 60px;
+    --text-light: #f8fafc;
+    --bg-focus: #e0f2fe;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+/* --- RESET E GERAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.8s ease;
 }
 
-
-.minha_foto {
-    float: right;
-    margin-left: 3vw;
-    margin-bottom: 2vw;
-    width: 12vw;
-    right: 15vw; 
-    border-radius: 2vw;
-    border: .3vw solid black;
+/* --- MENU LATERAL (SIDEBAR) --- */
+#sidebar {
+    width: var(--sidebar-collapsed);
+    height: 100vh;
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: fixed; left: 0; top: 0; overflow: hidden;
+    border-right: 1px solid rgba(255,255,255,0.1); z-index: 1000;
 }
 
-/*
-.minha_foto:hover{
-    border: 2px solid black;
-    width: min(67vw,800px);
-    position: absolute;
-    transition: 4.2s;
-    box-shadow: 0 3vw 5vw 0 black;
-    border: 2px solid black;
-    width: 10%;
-    position: absolute;
-    transition: 1.8s;
-}*/
+#sidebar:hover { width: var(--sidebar-width); }
 
-/*Logos pequenos em textos*/
-.logo_em_texto_UNICAMP{
-    width: min(2vw,25px); /*min(2vw,25px) tem que estar de acordo com .ponto1*/
-    position: relative;
-}
-
-.logo_em_texto_ETEC{
-    width: min(3vw,32px); /*min(2vw,25px) tem que estar de acordo com .ponto1*/
-    position: relative;
-}
-
-.logos_link{
-    position: relative;
-    width: min(3vw,30px);
-    transition-timing-function: ease-in-out;
-    transition: .5s;
-    right: max(-.5vw,-5px);
-  }
-  
-.logos_link:hover {
-    opacity: 0.6;
-}
-
-/*Linha de quebra*/
-hr.linha_de_quebra{
-    line-height: .5;
-    color: black;
-    background-color: black;
-    border-width: 0vw;
-    height:0vw;
-}
-
-/*Textos*/
-.meu_nome{
-    border-bottom-style: double;
-}
-
-.descricao{
-    font-size: min(2vw,22px);
-    margin-right: 11vw;
-}
-
-.topico{
-    font-size: min(2vw,35px);
-    line-height: 1%;
-}
-
-.subponto{
-    font-size: min(1.6vw,20px);
-    position: relative;
-    right: 15px;
-    color: black;
-}
-
-.ponto1{
-    font-size: min(2vw,25px);
-    color: black;
-}
-
-.ponto2{
-    font-size: min(2vw,25px);
-    position: relative;
-    right: 15px;
-    color: black;
-    transition: 1.5s;
-    transition-timing-function: ease-in-out;
-}
-
-.ponto2:hover{
-    font-size: min(2.25vw,30px);
-    position: relative;
-    color: #473f3f;
-    right: 15px;
-    transition: 1.3s;
-}
-
-.ponto3{
-    font-size: min(2vw,25px);
-    position: relative;
-    right: 15px;
-    color: black;
-}
-
-.ponto4{
-    font-size: min(2vw,25px);
-    position: relative;
-    right: 15px;
-    color: black;
-    list-style-type: square;
-}
-
-.observacao{
-    font-size: min(1.6vw,20px);
-    right: 4px;
-}
-
-/*Efeitos para textos escondidos*/
-.escondido {
-    position: relative;
-    text-align: justify;
-  }
-
-.conteudo_escondido{
-    border-radius: 0vw;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0px 0vw 0vw 0px rgba(0, 0, 0, 0.342);
-
-    padding-left: 5vw;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-top: 0;
-
-    border-radius: 0vw;
-    border: 0vw solid black;
-    z-index: 1;
-
-    width: fit-content;
-
-    font-size: 0;
-
+#sidebar .nav-links li a span {
     opacity: 0;
-    transition: 1s;
+    visibility: hidden;
+    white-space: nowrap;
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
 }
 
-.escondido:hover .conteudo_escondido {
-    position: absolute;
-    display: block;
-    transition: 1.5s;
+#sidebar:hover .nav-links li a span {
     opacity: 1;
-    box-shadow: 0px 3vw 3vw 0px rgba(0, 0, 0, 0.342);
-
-    width: fit-content;
-
-    border-radius: 3vw;
-
-    font-size: min(1.6vw,20px);
-    border: .1vw solid black;
-
-    padding-left: 3vw;
-    padding-right: min(2vw,15px);
-    padding-bottom: min(.5vw,5px);
-    padding-top: min(.5vw,5px);
-  }
-
-/*Imagens de fundo*/
-#fundo{
-    background-image: url(../../assets/imagens/fundo/madeira.jpg);
-    position: relative;
-    margin: 0px;
-    border: none;
-    background-position: left top;
-    background-repeat: repeat;
-    padding: 20px;
-    background-size: 612px 353px;
-
-    /*Natal
-    background-image: url(../../assets/imagens/fundo/natal.jpg);
-    position: relative;
-    margin: 0px;
-    border: none;
-    background-position: left top;
-    background-repeat: repeat;
-    padding: 20px;
-    background-size: 150px 150px;
-    */
+    visibility: visible;
+    transition: opacity 0.5s ease 0.1s, visibility 0s linear 0s;
 }
 
-#papel{
-    background-image: url(../../assets/imagens/fundo/papel.jpg);
-    background-repeat: repeat;
-    margin-right: 2%;
-    margin-left: 2%;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    padding: 2vw;
-    border: .4vw solid black;
-    border-radius: 4vw;
-    background-size: 50%;
+.nav-links { list-style: none; margin-top: 10px; width: var(--sidebar-width); }
+.nav-links li a {
+    padding: 15px 20px; display: flex; align-items: center;
+    color: var(--text-light); text-decoration: none; transition: 0.2s;
 }
+.nav-links li a:hover { background: rgba(255,255,255,0.1); color: var(--primary); }
 
-/*Imagens para certificados e suas configurações*/
-.galeria {
-    border: 0.3vw solid rgb(0, 0, 0);
-    transition: 1.5s;
-    transition-timing-function: ease-in-out;
-    border-radius: .2vw;
-    background-color: #fafafa;
-  }
-  
-.galeria:hover {
-    border: 0.3vw solid rgb(196, 196, 196);
-    background-color: #f8f8f8;
-    box-shadow: 0px 1vw 1vw 0.2vw rgba(0, 0, 0, 0.555);
-    transition: 0.5s;
-}
-  
-div.galeria img {
+/* --- CONTEÚDO PRINCIPAL --- */
+main {
+    flex-grow: 1;
+    margin-left: var(--sidebar-collapsed);
+    padding: 30px 20px;
     width: 100%;
-    height: auto;
+    z-index: 5;
+    transition: margin 0.3s, opacity 0.5s ease;
 }
-  
-.texto_img {
-    padding: 1vw;
+
+h1 { color: var(--primary); margin-bottom: 10px; font-size: 2rem; }
+
+h2 { 
+    margin: 40px 0 20px 0; 
+    font-size: 1.5rem; 
+    border-left: 4px solid var(--primary); 
+    padding-left: 15px; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+
+/* --- ELEMENTOS DO INDEX (CURRÍCULO) --- */
+.profile-header { text-align: center; margin-bottom: 30px; }
+
+.minha-foto {
+    width: 150px; height: 150px;
+    border-radius: 50%; border: 4px solid var(--primary);
+    object-fit: cover; margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.formacao-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.formacao-table td { padding: 15px 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.logo-em-texto { width: 25px; vertical-align: middle; margin-right: 10px; }
+
+/* --- PROJETOS E EVENTOS --- */
+.grid-visual { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.img-card img, .foto-evento { 
+    width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); 
+    transition: transform 0.3s; 
+}
+.img-card img:hover, .foto-evento:hover { transform: scale(1.02); }
+.bloco-com-imagem { display: grid; grid-template-columns: 1fr 250px; gap: 20px; align-items: start; }
+
+/* --- BOTÕES --- */
+.btn-foco {
+    background: var(--primary); color: white; border: none;
+    padding: 10px 20px; border-radius: 8px; cursor: pointer;
+    font-weight: 600; transition: 0.3s; margin-top: 10px;
+}
+.btn-foco:hover { transform: scale(1.05); }
+
+.btn-git {
+    text-decoration: none; color: white; background: #334155;
+    padding: 8px 15px; border-radius: 8px; font-size: 0.9rem;
+    transition: 0.3s; display: inline-flex; align-items: center; margin-top: 10px;
+}
+.btn-git:hover { background: var(--primary); }
+
+/* --- MODO FOCO E CANVAS --- */
+#mesh { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.2; pointer-events: none; transition: opacity 0.8s ease; }
+body.foco-ativo { background-color: var(--bg-focus); }
+body.foco-ativo #mesh { opacity: 1; z-index: 2000; pointer-events: all; cursor: pointer; }
+body.foco-ativo main, body.foco-ativo #sidebar { opacity: 0; pointer-events: none; }
+
+/* --- RODAPÉ --- */
+.disclaimer { margin-top: 30px; font-size: 0.75rem; color: #64748b; font-style: italic; text-align: left; }
+.github-footer { text-align: center; margin-top: 50px; padding: 40px; background: rgba(30, 41, 59, 0.9); border-radius: 16px; }
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+    main { margin-left: var(--sidebar-collapsed); padding: 20px; }
+    .formacao-table td { display: block; width: 100%; }
+    .bloco-com-imagem { grid-template-columns: 1fr; }
+    .foto-evento { order: -1; }
+    .grid-visual { grid-template-columns: 1fr; }
+}
+
+
+
+
+
+
+/* Ajustes para o Header do Index */
+.profile-header {
     text-align: center;
-    font-size: .8vw;
-    color: black;
-    transition: 0.5s;
+    margin-bottom: 40px;
 }
 
-.texto_img:hover {
-    padding: 1vw;
-    text-align: center;
-    font-size: .8vw;
-    color: rgb(105, 105, 105);
-}
-    
-.responsivo1 {
-    padding: 1vw 1vw;
-    float: left;
-    width: 30%;
+.minha-foto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-.responsivo2 {
-    padding: 0.5vw 1.25vw;
-    float: left;
-    width: 30%;
-    min-height: 26vw;
-}
-
-.termina_imagem:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-/*Deixar caixas alinhadas*/
-.container { /*Deixar alinhado*/
-    display: table;
-  }
-
-/*Links e funções*/
-.link {
-    text-decoration-line: none;
-    color: #050505;
-    text-decoration-line: underline;
-    text-decoration-color: #050505;
-    transition: color 1s, text-decoration-color 1s;
-    }
-.link:hover {
-    text-decoration-color: #4221b8;
-    color: #371d92;
-    }
-
-.link_liga {
-    text-decoration-line: none;
-    color: #050505;
-    text-decoration-line: none;
-    text-decoration-color: #050505;
-    transition: 1s;
-    }
-.link_liga:hover {
-    text-decoration-line: underline;
-    text-decoration-color: #4221b8;
-    color: #371d92;
-    }
-
-html {
-    scroll-behavior: smooth
-}
-
-.tab {
-    tab-size: 4;
-}
-
-/*Separação*/
-
-.tab {
-    overflow: hidden;
-    border: min(3px) solid #000000;
-    background-color: #eceae3;
-    box-shadow: 0 3vw 5vw 0 black;
-    border-radius: 20px;
-    margin: 20px;
-    padding: 3px;
-  }
-  .tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 7px 12px;
-    transition: 0.5s;
-    font-size: max(min(1.8vw, 20px), 6px);
-    border-radius: 15px;
-    color: #050505;
-    font-weight: bold;
-    transition: 0;
-  }
-  .tab button:hover {
-    background-color: #cecece;
-    font-weight: bold;
-  }
-  .tab button.active {
-    background-color: #000000;
-    color: rgb(245, 245, 245);
-  }
-  .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-    padding: 10px;
-    border-radius: 0 0 15px 15px;
-    color: #050505;
-  }
-
-/* Tabela */
-
-.formacao-container {
-    width: 100%;
-    margin: 20px 0;
-    font-size: min(2vw,22px);
-    /*font-family: Arial, sans-serif;*/
-}
-
+/* Ajustes para a Tabela de Formação */
 .formacao-table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
-.formacao-table th, 
 .formacao-table td {
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.formacao-table th {
-    font-weight: bold;
+/* Ajustes para a página de Contato e Logos */
+.logo-em-texto { 
+    width: 25px; 
+    vertical-align: middle; 
+    margin-right: 10px; 
 }
 
-.logo-em-texto {
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 5px;
+.redes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
-@media (max-width: 600px) {
-    .formacao-table td, 
-    .formacao-table th {
-        display: block;
-        text-align: center;
-    }
-
-    .formacao-table th {
-        background-color: #000000;
-        color: white;
-    }
-}
-
-/* LOGOS links */
-.contatos {
-    display: flex;
-    flex-direction: column;
-    align-items: start; 
-}
-.contato-item {
+.rede-item {
     display: flex;
     align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
     text-decoration: none;
-    font-size: 18px;
-    color: black;
-}
-.contato-item img {
-    width: 24px; 
-    margin-right: 10px;
+    color: white;
+    transition: 0.3s;
 }
 
-/* Colocar imagem à direita */
-.bloco-com-imagem {
+.rede-item:hover {
+    background: rgba(37, 99, 235, 0.1);
+    transform: translateY(-3px);
+}
+
+.rede-item img {
+    width: 30px;
+    height: 30px;
+}
+
+.container-botoes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* --- BADGES (Destaque e Novo) --- */
+.badge {
+    background: var(--primary);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* --- AJUSTE DE ESPAÇAMENTO DOS CARDS --- */
+.card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 25px; 
+    border-radius: 16px; 
+    margin-bottom: 25px;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+
+/* Remove o 'buraco' no topo do card */
+.card > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Ajuste para o título que contém a badge */
+.card h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    margin: 10px 0;
+    color: var(--primary);
+    margin-bottom: 12px;
 }
 
-.bloco-com-imagem .texto {
-    flex: 1;
+/* Estilo para o card que é destaque */
+.projeto-destaque {
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
 }
 
-.foto-evento {
-    width: 180px;
-    height: auto;
-    border-radius: 8px;
+
+
+/* --- GRID DE CERTIFICADOS (Galeria) --- */
+.certificados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.galeria-card {
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.galeria-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #000;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    box-shadow: 0px 0px 6px #00000055;
+    transition: opacity 0.3s;
+}
+
+.galeria-card:hover img { 
+    opacity: 0.8; 
+}
+
+.texto-img {
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    transition: color 0.3s;
+}
+
+.galeria-card:hover .texto-img {
+    color: var(--primary);
+}
+
+
+/* --- PÁGINA DE CONTATO --- */
+
+/* Estilo para o link de E-mail dentro do card */
+.contato-info h3 { 
+    margin-bottom: 15px; 
+    font-weight: 400; 
+    color: #cbd5e1; 
+}
+
+.contato-info strong { 
+    color: var(--primary); 
+    margin-right: 10px; 
+}
+
+.contato-info a { 
+    color: var(--text-light); 
+    text-decoration: none; 
+    transition: 0.3s; 
+}
+
+.contato-info a:hover { 
+    color: var(--primary); 
+}
+
+/* --- GRID DE REDES SOCIAIS --- */
+.redes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.rede-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-light);
+    transition: 0.3s;
+    border: 1px solid transparent;
+    text-align: center;
+}
+
+.rede-item:hover {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+/* Ícones das redes: começam cinzas e ganham cor no hover */
+.rede-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    filter: grayscale(1) brightness(1.5);
+    transition: 0.3s;
+}
+
+.rede-item:hover img { 
+    filter: grayscale(0); 
+}
+
+/* Ajuste mobile para garantir 2 colunas em telas pequenas */
+@media (max-width: 768px) {
+    .redes-grid { grid-template-columns: 1fr 1fr; }
+}
+
+
+
+/* --- ANIMAÇÃO DO ÍCONE DE MENU (HAMBÚRGUER) --- */
+.menu-btn {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: left; /* Define a origem da rotação */
+}
+
+/* Quando a sidebar sofre hover, as barras se transformam */
+#sidebar:hover .bar:nth-child(1) {
+    transform: rotate(-20deg) translateY(8px) translateX(-2px);
+    width: 30px;
+}
+
+#sidebar:hover .bar:nth-child(2) {
+    /*opacity: 0;*/
+    /*transform: translateX(10px);*/
+    width: 200px;
+}
+
+#sidebar:hover .bar:nth-child(3) {
+    transform: rotate(20deg) translateY(-8px) translateX(-2px);;
+    width: 30px;
 }

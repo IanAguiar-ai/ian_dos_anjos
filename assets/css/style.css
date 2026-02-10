@@ -421,3 +421,50 @@ body.foco-ativo main, body.foco-ativo #sidebar { opacity: 0; pointer-events: non
     transform: rotate(20deg) translateY(-8px) translateX(-2px);;
     width: 30px;
 }
+
+
+/* Layout em duas colunas */
+.card-com-imagem {
+    display: grid;
+    grid-template-columns: 1fr 250px; /* Texto largo, Imagem com 250px */
+    gap: 25px;
+    align-items: start;
+}
+
+/* Container da Galeria */
+.galeria-projeto {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Altura da imagem */
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Estilo das imagens que alternam */
+.foto-alternando {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Imagem visível */
+.foto-alternando.active {
+    opacity: 1;
+}
+
+/* Responsividade: Volta para uma coluna no celular */
+@media (max-width: 768px) {
+    .card-com-imagem {
+        grid-template-columns: 1fr;
+    }
+    .galeria-projeto {
+        order: -1; /* Imagem aparece em cima do texto no mobile */
+        height: 200px;
+    }
+}
